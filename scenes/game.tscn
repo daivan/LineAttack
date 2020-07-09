@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://art/bottom_ui.png" type="Texture" id=1]
+[ext_resource path="res://art/top_ui.png" type="Texture" id=2]
+[ext_resource path="res://art/background.png" type="Texture" id=3]
+[ext_resource path="res://tile.tscn" type="PackedScene" id=4]
+
+[node name="game_window" type="Node2D"]
+
+[node name="background" type="TextureRect" parent="."]
+margin_right = 576.0
+margin_bottom = 1024.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bottom_ui" type="TextureRect" parent="."]
+margin_top = 824.0
+margin_right = 576.0
+margin_bottom = 1024.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="top_ui" type="TextureRect" parent="."]
+margin_right = 576.0
+margin_bottom = 200.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tile" parent="." instance=ExtResource( 4 )]
+position = Vector2( 104, 101 )
+
+[node name="tile2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 178, 100 )
+
+[node name="tile3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 107, 174 )
+
+[node name="tile5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 107, 247 )
+
+[node name="tile6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 187, 251 )
+
+[node name="tile7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 109, 322 )
+
+[node name="tile4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 183, 173 )
