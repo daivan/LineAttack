@@ -14,6 +14,11 @@ export (int) var y_offset;
 
 # Obsticle Stuff
 export (PoolVector2Array) var empty_spaces
+export (PoolVector2Array) var ice_spaces
+
+# Obsticle Signals
+signal make_ice
+signal damage_ice
 
 # The piece array
 var possible_pieces = [
@@ -38,6 +43,13 @@ var first_touch = Vector2(0 ,0);
 var final_touch = Vector2(0 ,0);
 var controlling = false;
 
+# Scoring Variables
+signal update_score
+export(int) var piece_value
+var streak = 1
+
+# Effects
+var particle_effect = preload("res://Scenes/particle_effect.tscn");
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -45,14 +57,20 @@ func _ready():
 	randomize();
 	all_pieces = make_2d_array();
 	spawn_pieces();
+	spawn_ice();
 	
-func restricted_movement(place):
+func restricted_fill(place):
 	# Check the empty pices
-	for i in empty_spaces.size():
-		if empty_spaces[i] == place:
-			return true;
+	if is_in_array(empty_spaces, place):
+		return true;
 	return false;
-	
+
+func is_in_array(array, item):
+	for i in array.size():
+		if array[i] == item:
+			return true
+	return false
+
 func make_2d_array():
 	var array = [];
 	for i in width:
@@ -65,7 +83,7 @@ func make_2d_array():
 func spawn_pieces():
 	for i in width:
 		for j in height:
-			if !restricted_movement(Vector2(i,j)):
+			if !restricted_fill(Vector2(i,j)):
 				# chhose a random number and store it
 				var rand = floor(rand_range(0, possible_pieces.size()));
 				var piece = possible_pieces[rand].instance();
@@ -80,6 +98,10 @@ func spawn_pieces():
 				piece.position = grid_to_pixel(i, j);
 				all_pieces[i][j] = piece;
 			
+
+func spawn_ice():
+	for i in ice_spaces.size():
+		emit_signal("make_ice", ice_spaces[i]);
 
 func match_at(i, j, color):
 	
@@ -176,49 +198,62 @@ func _process(delta):
 func find_matches():
 	for i in width:
 		for j in height:
-			if all_pieces[i][j] != null:
+			if !is_piece_null(i, j):
 				var current_color = all_pieces[i][j].color;
 				if i> 0 && i < width - 1:
-					if all_pieces[i-1][j] != null && all_pieces[i+1][j] != null:
+					if !is_piece_null(i - 1,j) && !is_piece_null(i + 1,j):
 						if current_color == all_pieces[i + 1][j].color && current_color == all_pieces[i - 1][j].color:
-							all_pieces[i + 1][j].matched = true;
-							all_pieces[i + 1][j].dim();
-							all_pieces[i][j].matched = true;
-							all_pieces[i][j].dim();
-							all_pieces[i - 1][j].matched = true;
-							all_pieces[i - 1][j].dim();
+							match_and_dim(all_pieces[i + 1][j]);
+							match_and_dim(all_pieces[i][j]);
+							match_and_dim(all_pieces[i - 1][j]);
 				if j> 0 && j < height - 1:
-					if all_pieces[i][j+1] != null && all_pieces[i][j-1] != null:
+					if !is_piece_null(i,j + 1) && !is_piece_null(i,j - 1):
 						if current_color == all_pieces[i][j+1].color && current_color == all_pieces[i][j-1].color:
-							all_pieces[i][j+1].matched = true;
-							all_pieces[i][j+1].dim();
-							all_pieces[i][j].matched = true;
-							all_pieces[i][j].dim();
-							all_pieces[i][j-1].matched = true;
-							all_pieces[i][j-1].dim();
+							match_and_dim(all_pieces[i][j+1]);
+							match_and_dim(all_pieces[i][j]);
+							match_and_dim(all_pieces[i][j-1]);
 							
 	get_parent().get_node("destroy_timer").start();
-								
+
+func is_piece_null(column, row):
+	if all_pieces[column][row] == null:
+		return true;
+	return false;
 	
+	
+func match_and_dim(item):
+	item.matched = true;
+	item.dim();
+	pass;
+
 func destroy_matched():
 	var was_matched = false;
 	for i in width:
 		for j in height:
 			if all_pieces[i][j] != null:
 				if all_pieces[i][j].matched:
+					emit_signal("damage_ice",Vector2(i,j))
 					was_matched = true;
 					all_pieces[i][j].queue_free();
 					all_pieces[i][j] = null;
+					make_effect(particle_effect, i, j);
+					emit_signal("update_score", piece_value * streak);
 	move_checked = true;
 	if was_matched:
 		get_parent().get_node("collapse_timer").start();
 	else:
 		swap_back();
 
+func make_effect(effect, column, row):
+	var current = effect.instance();
+	current.position = grid_to_pixel(column, row)
+	add_child(current)
+	
+
 func collapse_columns():
 	for i in width:
 		for j in height:
-			if all_pieces[i][j] == null && !restricted_movement(Vector2(i, j)):
+			if all_pieces[i][j] == null && !restricted_fill(Vector2(i, j)):
 				for k in range(j + 1, height):
 					if all_pieces[i][k] != null:
 						all_pieces[i][k].move(grid_to_pixel(i,j));
@@ -228,9 +263,10 @@ func collapse_columns():
 	get_parent().get_node("refill_timer").start();
 	
 func refill_columns():
+	streak+=1;
 	for i in width:
 		for j in height:
-			if all_pieces[i][j] == null && !restricted_movement(Vector2(i, j)):
+			if all_pieces[i][j] == null && !restricted_fill(Vector2(i, j)):
 				var rand = floor(rand_range(0, possible_pieces.size()));
 				var piece = possible_pieces[rand].instance();
 				var loops = 0;
@@ -255,6 +291,7 @@ func after_refill():
 					get_parent().get_node("destroy_timer").start();
 					return;
 	state = move;
+	streak = 1;
 	move_checked = false;
 
 func _on_destroy_timer_timeout():
