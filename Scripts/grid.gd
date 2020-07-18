@@ -45,11 +45,20 @@ var controlling = false;
 
 # Scoring Variables
 signal update_score
+signal setup_max_score
+export(int) var max_score
 export(int) var piece_value
 var streak = 1
 
+# Counter Variables
+signal update_counter
+export(int) var current_counter_value
+export(bool) var is_moves
+signal game_over
+
 # Effects
 var particle_effect = preload("res://Scenes/particle_effect.tscn");
+var animated_effect = preload("res://Scenes/animated_explosion.tscn");
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -58,6 +67,10 @@ func _ready():
 	all_pieces = make_2d_array();
 	spawn_pieces();
 	spawn_ice();
+	emit_signal("update_counter", current_counter_value);
+	emit_signal("setup_max_score", max_score);
+	if !is_moves:
+		$Timer.start();
 	
 func restricted_fill(place):
 	# Check the empty pices
@@ -237,6 +250,7 @@ func destroy_matched():
 					all_pieces[i][j].queue_free();
 					all_pieces[i][j] = null;
 					make_effect(particle_effect, i, j);
+					make_effect(animated_effect, i, j);
 					emit_signal("update_score", piece_value * streak);
 	move_checked = true;
 	if was_matched:
@@ -293,6 +307,11 @@ func after_refill():
 	state = move;
 	streak = 1;
 	move_checked = false;
+	if is_moves:
+		current_counter_value -= 1;
+		emit_signal("update_counter");
+		if current_counter_value == 0:
+			declare_game_over();
 
 func _on_destroy_timer_timeout():
 	destroy_matched();
@@ -303,3 +322,16 @@ func _on_collapse_timer_timeout():
 func _on_rifill_timer_timeout():
 	refill_columns();
 
+
+
+func _on_Timer_timeout():
+	current_counter_value -= 1;
+	emit_signal("update_counter");
+	if current_counter_value == 0:
+		declare_game_over();
+		$Timer.stop();
+
+func declare_game_over():
+	emit_signal("game_over");
+	print("Game Over");
+	state = wait;

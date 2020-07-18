@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://art/top_ui.png" type="Texture" id=1]
 [ext_resource path="res://fonts/kenney_blocks.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scripts/top_ui.gd" type="Script" id=3]
+[ext_resource path="res://art/ui/progress_full.png" type="Texture" id=4]
+[ext_resource path="res://art/ui/progress_empty.png" type="Texture" id=5]
 
 [node name="top_ui" type="TextureRect"]
 margin_right = 576.0
@@ -29,16 +31,28 @@ margin_right = 544.0
 margin_bottom = 168.0
 custom_constants/separation = 32
 
-[node name="ScoreLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 margin_right = 160.0
 margin_bottom = 168.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+margin_right = 160.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
 text = "000"
 align = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="TextureProgress" type="TextureProgress" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 64.0
+margin_right = 160.0
+margin_bottom = 128.0
+texture_under = ExtResource( 5 )
+texture_progress = ExtResource( 4 )
+
+[node name="CounterLabel" type="Label" parent="MarginContainer/HBoxContainer"]
 margin_left = 192.0
 margin_right = 352.0
 margin_bottom = 168.0
