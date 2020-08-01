@@ -56,6 +56,9 @@ export(int) var current_counter_value
 export(bool) var is_moves
 signal game_over
 
+# Goal check stuff
+signal check_goal
+
 # Effects
 var particle_effect = preload("res://Scenes/particle_effect.tscn");
 var animated_effect = preload("res://Scenes/animated_explosion.tscn");
@@ -245,6 +248,7 @@ func destroy_matched():
 		for j in height:
 			if all_pieces[i][j] != null:
 				if all_pieces[i][j].matched:
+					emit_signal("check_goal", all_pieces[i][j].color);
 					emit_signal("damage_ice",Vector2(i,j))
 					was_matched = true;
 					all_pieces[i][j].queue_free();
