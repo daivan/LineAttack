@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/2436X1125.png-8d714835996ea67509872bc01176f825.stex"
+path="res://.import/76_x_76.png-5e2a19be6ab9335851c04d5ded94c12d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://splashes/Landscape Lunch Screens/2436X1125.png"
-dest_files=[ "res://.import/2436X1125.png-8d714835996ea67509872bc01176f825.stex" ]
+source_file="res://splashes/required_icons/76_x_76.png"
+dest_files=[ "res://.import/76_x_76.png-5e2a19be6ab9335851c04d5ded94c12d.stex" ]
 
 [params]
 

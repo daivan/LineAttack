@@ -1,15 +1,21 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://art/bottom_ui.png" type="Texture" id=1]
-[ext_resource path="res://Scenes/top_ui.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/top_ui.tscn" type="PackedScene" id=2]
 [ext_resource path="res://art/background.png" type="Texture" id=3]
-[ext_resource path="res://Scripts/grid.gd" type="Script" id=4]
-[ext_resource path="res://Scenes/ice_holder.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/game_over.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scripts/goal_holder.gd" type="Script" id=7]
-[ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/GoalBackground.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scripts/grid.gd" type="Script" id=4]
+[ext_resource path="res://scenes/ice_holder.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/game_over.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/goal_holder.gd" type="Script" id=7]
+[ext_resource path="res://scenes/goal.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/goal_background.tscn" type="PackedScene" id=9]
 [ext_resource path="res://art/pieces/blue.png" type="Texture" id=10]
+
+
+
+
+
+
 
 [node name="game_window" type="Node2D"]
 

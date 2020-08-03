@@ -1,4 +1,4 @@
-extends "res://Scripts/BaseMenuPanel.gd"
+extends "res://scripts/base_menu_panel.gd"
 
 
 
@@ -7,7 +7,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _on_quit_pressed():
-	get_tree().change_scene("res://Scenes/Game Menu.tscn");
+	get_tree().change_scene("res://scenes/game_menu.tscn");
 
 func _on_restart_pressed():
 	get_tree().reload_current_scene();
