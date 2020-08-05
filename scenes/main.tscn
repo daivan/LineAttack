@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/base_menu_panel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://art/logo.png" type="Texture" id=2]
+[ext_resource path="res://art/play.png" type="Texture" id=3]
+[ext_resource path="res://art/config.png" type="Texture" id=4]
+[ext_resource path="res://scripts/main.gd" type="Script" id=5]
+
+
+
+
+
+
+
+[node name="Main" instance=ExtResource( 1 )]
+script = ExtResource( 5 )
+
+[node name="Graphics" parent="MarginContainer/GraphicsAndButtons" index="0"]
+margin_bottom = 488.0
+rect_min_size = Vector2( 488, 488 )
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Buttons" parent="MarginContainer/GraphicsAndButtons" index="1"]
+margin_top = 518.0
+margin_bottom = 922.0
+
+[node name="button1" parent="MarginContainer/GraphicsAndButtons/Buttons" index="0"]
+margin_bottom = 256.0
+rect_min_size = Vector2( 512, 256 )
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 3
+
+[node name="button2" parent="MarginContainer/GraphicsAndButtons/Buttons" index="1"]
+margin_top = 276.0
+margin_bottom = 404.0
+rect_min_size = Vector2( 512, 128 )
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 3
+[connection signal="pressed" from="MarginContainer/GraphicsAndButtons/Buttons/button1" to="." method="_on_button1_pressed"]
+[connection signal="pressed" from="MarginContainer/GraphicsAndButtons/Buttons/button2" to="." method="_on_button2_pressed"]
