@@ -22,10 +22,10 @@ signal damage_ice
 
 # The piece array
 var possible_pieces = [
-	preload("res://Scenes/yellow_piece.tscn"),
-	preload("res://Scenes/blue_piece.tscn"),
-	preload("res://Scenes/green_piece.tscn"),
-	preload("res://Scenes/red_piece.tscn")
+	preload("res://scenes/yellow_piece.tscn"),
+	preload("res://scenes/blue_piece.tscn"),
+	preload("res://scenes/green_piece.tscn"),
+	preload("res://scenes/red_piece.tscn")
 ];
 
 # the current pieces in the scene
@@ -60,8 +60,8 @@ signal game_over
 signal check_goal
 
 # Effects
-var particle_effect = preload("res://Scenes/particle_effect.tscn");
-var animated_effect = preload("res://Scenes/animated_explosion.tscn");
+var particle_effect = preload("res://scenes/particle_effect.tscn");
+var animated_effect = preload("res://scenes/animated_explosion.tscn");
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

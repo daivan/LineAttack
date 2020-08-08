@@ -11,12 +11,6 @@
 [ext_resource path="res://scenes/goal_background.tscn" type="PackedScene" id=9]
 [ext_resource path="res://art/pieces/blue.png" type="Texture" id=10]
 
-
-
-
-
-
-
 [node name="game_window" type="Node2D"]
 
 [node name="background" type="TextureRect" parent="."]

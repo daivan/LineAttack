@@ -7,7 +7,7 @@ extends Node2D
 var ice_pieces = [];
 var width = 8;
 var height = 10;
-var ice = preload("res://Scenes/ice.tscn")
+var ice = preload("res://scenes/ice.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

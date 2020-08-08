@@ -23,5 +23,5 @@ func _on_Settings_back_button():
 
 
 func _on_Main_play_pressed():
-	get_tree().change_scene("res://Scenes/game.tscn");
+	get_tree().change_scene("res://scenes/game.tscn");
 	pass # Replace with function body.
