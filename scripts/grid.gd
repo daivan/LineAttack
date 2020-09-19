@@ -148,12 +148,18 @@ func is_in_grid(grid_position):
 			return true;
 	return false;
 
+func _input(event):
+	if event.is_action_pressed("ui_touch"): 
+		print("ui_touch")
+		emit_signal("update_counter");
+	
 func touch_input():
 	
 	if Input.is_action_just_pressed("ui_touch"):
 		if is_in_grid(pixel_to_grid(get_global_mouse_position().x, get_global_mouse_position().y)):
 			first_touch = pixel_to_grid(get_global_mouse_position().x, get_global_mouse_position().y);
 			controlling = true;
+			emit_signal("update_score", 10);
 		
 	if Input.is_action_just_released("ui_touch"):
 		if is_in_grid(pixel_to_grid(get_global_mouse_position().x, get_global_mouse_position().y)) && controlling:

@@ -2,7 +2,6 @@
 
 [ext_resource path="res://fonts/kenney_blocks.ttf" type="DynamicFontData" id=1]
 
-
 [resource]
 size = 40
 use_mipmaps = true
