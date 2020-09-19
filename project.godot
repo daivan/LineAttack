@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="LineAttack"
 run/main_scene="res://scenes/game_menu.tscn"
+boot_splash/image="res://art/splashscreen.png"
 config/icon="res://art/pieces/ice_holder.png"
 
 [display]
