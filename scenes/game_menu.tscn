@@ -18,5 +18,6 @@ __meta__ = {
 
 [node name="Settings" parent="." instance=ExtResource( 3 )]
 [connection signal="play_pressed" from="Main" to="." method="_on_Main_play_pressed"]
+[connection signal="play_time_attack_pressed" from="Main" to="." method="_on_Main_play_time_attack_pressed"]
 [connection signal="settings_pressed" from="Main" to="." method="_on_Main_settings_pressed"]
 [connection signal="back_button" from="Settings" to="." method="_on_Settings_back_button"]
