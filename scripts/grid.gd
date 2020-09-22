@@ -65,7 +65,7 @@ var animated_effect = preload("res://scenes/animated_explosion.tscn");
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	state = move;
+	state = wait;
 	randomize();
 	all_pieces = make_2d_array();
 	spawn_pieces();
@@ -347,4 +347,9 @@ func declare_game_over():
 
 func _on_goal_holder_game_won():
 	state = wait;
+	pass # Replace with function body.
+
+
+func _on_level_description_screen_start_level():
+	state=move
 	pass # Replace with function body.

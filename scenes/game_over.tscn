@@ -22,8 +22,6 @@ tracks/0/keys = {
 }
 
 [node name="game_over" type="CanvasLayer"]
-offset = Vector2( 567, 0 )
-transform = Transform2D( 1, 0, 0, 1, 567, 0 )
 script = ExtResource( 4 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
