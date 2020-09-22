@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://art/bottom_ui.png" type="Texture" id=1]
 [ext_resource path="res://scenes/top_ui.tscn" type="PackedScene" id=2]
@@ -9,7 +9,9 @@
 [ext_resource path="res://scripts/goal_holder.gd" type="Script" id=7]
 [ext_resource path="res://scenes/goal_score.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/goal_background.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/fail_holder.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/game_win.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/fail_timer.tscn" type="PackedScene" id=12]
 
 [node name="game_window" type="Node2D"]
 
@@ -62,7 +64,10 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
-[node name="game_over" parent="." instance=ExtResource( 6 )]
+[node name="second_timer" type="Timer" parent="."]
+autostart = true
+
+[node name="game_over_screen" parent="." instance=ExtResource( 6 )]
 
 [node name="goal_holder" type="Node" parent="."]
 script = ExtResource( 7 )
@@ -73,10 +78,15 @@ score_needed = 1000
 [node name="game_win_screen" parent="." instance=ExtResource( 11 )]
 offset = Vector2( 567, 0 )
 transform = Transform2D( 1, 0, 0, 1, 567, 0 )
+
+[node name="fail_holder" parent="." instance=ExtResource( 10 )]
+
+[node name="fail_timer" parent="fail_holder" instance=ExtResource( 12 )]
+time_needed = 10
 [connection signal="check_goal" from="grid" to="goal_holder" method="_on_grid_check_goal"]
 [connection signal="check_goal" from="grid" to="top_ui" method="_on_grid_check_goal"]
 [connection signal="damage_ice" from="grid" to="ice_holder" method="_on_grid_damage_ice"]
-[connection signal="game_over" from="grid" to="game_over" method="_on_grid_game_over"]
+[connection signal="game_over" from="grid" to="game_over_screen" method="_on_grid_game_over"]
 [connection signal="make_ice" from="grid" to="ice_holder" method="_on_grid_make_ice"]
 [connection signal="setup_max_score" from="grid" to="top_ui" method="_on_grid_setup_max_score"]
 [connection signal="update_counter" from="grid" to="top_ui" method="_on_grid_update_counter"]
@@ -85,6 +95,8 @@ transform = Transform2D( 1, 0, 0, 1, 567, 0 )
 [connection signal="timeout" from="destroy_timer" to="grid" method="_on_destroy_timer_timeout"]
 [connection signal="timeout" from="collapse_timer" to="grid" method="_on_collapse_timer_timeout"]
 [connection signal="timeout" from="refill_timer" to="grid" method="_on_rifill_timer_timeout"]
+[connection signal="timeout" from="second_timer" to="fail_holder" method="_on_second_timer_timeout"]
 [connection signal="create_goal" from="goal_holder" to="top_ui" method="_on_goal_holder_create_goal"]
 [connection signal="game_won" from="goal_holder" to="grid" method="_on_goal_holder_game_won"]
 [connection signal="game_won" from="goal_holder" to="game_win_screen" method="_on_goal_holder_game_won"]
+[connection signal="game_lost" from="fail_holder" to="game_over_screen" method="_on_fail_holder_game_lost"]

@@ -16,3 +16,8 @@ func _on_restart_pressed():
 func _on_grid_game_over():
 	slide_in();
 	pass # Replace with function body.
+
+
+func _on_fail_holder_game_lost():
+	slide_in();
+	pass # Replace with function body.
