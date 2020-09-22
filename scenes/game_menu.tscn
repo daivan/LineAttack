@@ -17,6 +17,16 @@ __meta__ = {
 [node name="Main" parent="." instance=ExtResource( 2 )]
 
 [node name="Settings" parent="." instance=ExtResource( 3 )]
+
+[node name="version" type="Label" parent="."]
+margin_left = 476.59
+margin_top = 1006.92
+margin_right = 560.59
+margin_bottom = 1020.92
+text = "Version 1.1.0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="play_pressed" from="Main" to="." method="_on_Main_play_pressed"]
 [connection signal="play_time_attack_pressed" from="Main" to="." method="_on_Main_play_time_attack_pressed"]
 [connection signal="settings_pressed" from="Main" to="." method="_on_Main_settings_pressed"]

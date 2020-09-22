@@ -9,7 +9,8 @@ func _ready():
 func create_goals():
 	for i in get_child_count():
 		var current = get_child(i)
-		emit_signal("create_goal", current.max_needed, current.goal_texture, current.goal_string)
+		if(current.goal_type != "score"):
+			emit_signal("create_goal", current.max_needed, current.goal_texture, current.goal_string)
 
 func check_game_win():
 	if goals_met():
@@ -29,3 +30,13 @@ func check_goals(goal_type):
 
 func _on_grid_check_goal(goal_type):
 	check_goals(goal_type);
+
+	
+	
+func _on_grid_update_score(amount_to_change):
+	for i in get_child_count():
+		var current = get_child(i)
+		if(current.goal_type == "score"):
+			current.update_score(amount_to_change)
+				
+	pass # Replace with function body.

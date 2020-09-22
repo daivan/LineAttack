@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://art/bottom_ui.png" type="Texture" id=1]
 [ext_resource path="res://scenes/top_ui.tscn" type="PackedScene" id=2]
@@ -7,9 +7,8 @@
 [ext_resource path="res://scenes/ice_holder.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/game_over.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/goal_holder.gd" type="Script" id=7]
-[ext_resource path="res://scenes/goal.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/goal_score.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/goal_background.tscn" type="PackedScene" id=9]
-[ext_resource path="res://art/pieces/blue.png" type="Texture" id=10]
 [ext_resource path="res://scenes/game_win.tscn" type="PackedScene" id=11]
 
 [node name="game_window" type="Node2D"]
@@ -46,10 +45,8 @@ empty_spaces = PoolVector2Array( 0, 0, 7, 0, 0, 9, 7, 9, 0, 0, 4, 3, 0, 0, 0, 0 
 ice_spaces = PoolVector2Array( 3, 0, 4, 0, 0, 0, 0, 0 )
 max_score = 300
 piece_value = 10
-current_counter_value = 10
+current_counter_value = 50
 is_moves = true
-
-[node name="Timer" type="Timer" parent="grid"]
 
 [node name="ice_holder" parent="." instance=ExtResource( 5 )]
 
@@ -70,10 +67,8 @@ one_shot = true
 [node name="goal_holder" type="Node" parent="."]
 script = ExtResource( 7 )
 
-[node name="Goal" parent="goal_holder" instance=ExtResource( 8 )]
-goal_texture = ExtResource( 10 )
-max_needed = 5
-goal_string = "blue"
+[node name="goal_score" parent="goal_holder" instance=ExtResource( 8 )]
+score_needed = 1000
 
 [node name="game_win_screen" parent="." instance=ExtResource( 11 )]
 offset = Vector2( 567, 0 )
@@ -85,11 +80,11 @@ transform = Transform2D( 1, 0, 0, 1, 567, 0 )
 [connection signal="make_ice" from="grid" to="ice_holder" method="_on_grid_make_ice"]
 [connection signal="setup_max_score" from="grid" to="top_ui" method="_on_grid_setup_max_score"]
 [connection signal="update_counter" from="grid" to="top_ui" method="_on_grid_update_counter"]
+[connection signal="update_score" from="grid" to="goal_holder" method="_on_grid_update_score"]
 [connection signal="update_score" from="grid" to="top_ui" method="_on_grid_update_score"]
-[connection signal="timeout" from="grid/Timer" to="grid" method="_on_Timer_timeout"]
 [connection signal="timeout" from="destroy_timer" to="grid" method="_on_destroy_timer_timeout"]
 [connection signal="timeout" from="collapse_timer" to="grid" method="_on_collapse_timer_timeout"]
 [connection signal="timeout" from="refill_timer" to="grid" method="_on_rifill_timer_timeout"]
 [connection signal="create_goal" from="goal_holder" to="top_ui" method="_on_goal_holder_create_goal"]
-[connection signal="game_won" from="goal_holder" to="game_win_screen" method="_on_goal_holder_game_won"]
 [connection signal="game_won" from="goal_holder" to="grid" method="_on_goal_holder_game_won"]
+[connection signal="game_won" from="goal_holder" to="game_win_screen" method="_on_goal_holder_game_won"]

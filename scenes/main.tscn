@@ -35,6 +35,16 @@ texture_normal = ExtResource( 3 )
 expand = true
 stretch_mode = 3
 
+[node name="Label" type="Label" parent="MarginContainer/GraphicsAndButtons/Buttons/button 1,5" index="0"]
+margin_left = 222.236
+margin_top = 49.5511
+margin_right = 758.236
+margin_bottom = 63.5511
+text = "Time attack"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="button2" parent="MarginContainer/GraphicsAndButtons/Buttons" index="2"]
 margin_top = 200.0
 margin_bottom = 328.0
