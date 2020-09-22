@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://art/play.png" type="Texture" id=1]
+[ext_resource path="res://scripts/level_description_screen.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "slide_out"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 567, 0 ) ]
+}
+
+[node name="level_description_screen" type="CanvasLayer"]
+offset = Vector2( 567, 0 )
+transform = Transform2D( 1, 0, 0, 1, 567, 0 )
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 47.1435
+margin_top = 246.942
+margin_right = 430.143
+margin_bottom = 578.942
+color = Color( 0.74902, 1, 0.635294, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 85.3071
+margin_top = 298.575
+margin_right = 486.307
+margin_bottom = 429.575
+text = "Level Description
+Bla bla bla"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 89.7969
+margin_top = 480.414
+margin_right = 169.797
+margin_bottom = 558.414
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/slide_out = SubResource( 1 )
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
