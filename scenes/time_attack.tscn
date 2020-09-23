@@ -112,4 +112,5 @@ autoplay = true
 [connection signal="game_won" from="goal_holder" to="game_win_screen" method="_on_goal_holder_game_won"]
 [connection signal="game_won" from="goal_holder" to="grid" method="_on_goal_holder_game_won"]
 [connection signal="game_lost" from="fail_holder" to="game_over_screen" method="_on_fail_holder_game_lost"]
+[connection signal="game_lost" from="fail_holder" to="grid" method="_on_fail_holder_game_lost"]
 [connection signal="start_level" from="level_description_screen" to="grid" method="_on_level_description_screen_start_level"]

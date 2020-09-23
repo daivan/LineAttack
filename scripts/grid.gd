@@ -353,3 +353,8 @@ func _on_goal_holder_game_won():
 func _on_level_description_screen_start_level():
 	state=move
 	pass # Replace with function body.
+
+
+func _on_fail_holder_game_lost():
+	state = wait;
+	pass # Replace with function body.
