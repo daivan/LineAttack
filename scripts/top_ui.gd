@@ -6,12 +6,15 @@ extends TextureRect
 # var b = "text"
 
 onready var score_label = $MarginContainer/HBoxContainer/VBoxContainer/ScoreLabel
-onready var counter_label = $MarginContainer/HBoxContainer/CounterLabel
+onready var counter_label = $MarginContainer/HBoxContainer/VBoxContainer2/CounterLabel
 onready var score_bar = $MarginContainer/HBoxContainer/VBoxContainer/TextureProgress
 onready var goal_container = $MarginContainer/HBoxContainer/HBoxContainer
+onready var timer_label = $MarginContainer/HBoxContainer/VBoxContainer2/TimerLabel
+
 export(PackedScene) var goal_prefab
 var current_score = 0;
 var current_count = 0;
+var current_timer = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -53,4 +56,16 @@ func _on_goal_holder_create_goal(new_max, new_texture, new_value):
 func _on_grid_check_goal(goal_type):
 	for i in goal_container.get_child_count():
 		goal_container.get_child(i).update_goal_values(goal_type);
+	pass # Replace with function body.
+
+
+func _on_fail_holder_create_fail(fail_timer):
+	current_timer = fail_timer;
+	timer_label.text = str(current_timer);
+	pass # Replace with function body.
+
+
+func _on_second_timer_timeout():
+	current_timer = current_timer - 1;
+	timer_label.text = str(current_timer);
 	pass # Replace with function body.
