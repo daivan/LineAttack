@@ -1,6 +1,17 @@
 extends Node
 
+signal create_fail
 signal game_lost
+
+func _ready():
+	create_fails();
+	
+func create_fails():
+	for i in get_child_count():
+		var current = get_child(i)
+		if(current.fail_type == "timer"):
+			emit_signal("create_fail", current.time_needed)
+
 
 func check_game_fail():
 	if fails_met():

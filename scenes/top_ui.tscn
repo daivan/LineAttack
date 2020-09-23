@@ -32,13 +32,13 @@ margin_bottom = 168.0
 custom_constants/separation = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-margin_right = 160.0
+margin_right = 220.0
 margin_bottom = 168.0
 size_flags_horizontal = 3
 
 [node name="ScoreLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_right = 160.0
-margin_bottom = 60.0
+margin_right = 220.0
+margin_bottom = 41.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
@@ -46,24 +46,36 @@ text = "000"
 align = 1
 
 [node name="TextureProgress" type="TextureProgress" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 64.0
-margin_right = 160.0
-margin_bottom = 128.0
+margin_top = 45.0
+margin_right = 220.0
+margin_bottom = 109.0
 texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 4 )
 
-[node name="CounterLabel" type="Label" parent="MarginContainer/HBoxContainer"]
-margin_left = 192.0
-margin_right = 352.0
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 252.0
+margin_right = 292.0
 margin_bottom = 168.0
+
+[node name="CounterLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 40.0
+margin_bottom = 123.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
 text = "00"
 align = 1
 
+[node name="TimerLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 127.0
+margin_right = 40.0
+margin_bottom = 168.0
+custom_fonts/font = ExtResource( 2 )
+text = "00"
+align = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
-margin_left = 384.0
+margin_left = 324.0
 margin_right = 544.0
 margin_bottom = 168.0
 size_flags_horizontal = 3
