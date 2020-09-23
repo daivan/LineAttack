@@ -12,6 +12,8 @@ func _ready():
 
 
 func _on_TextureButton_pressed():
+	get_node('../second_timer').start();
+	
 	$AnimationPlayer.play("slide_out");
 	emit_signal("start_level");
 	pass # Replace with function body.

@@ -15,6 +15,7 @@ func fails_met():
 	
 
 func _on_second_timer_timeout():
+
 	for i in get_child_count():
 		var current = get_child(i)
 		if(current.fail_type == "timer"):
