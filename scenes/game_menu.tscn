@@ -7,8 +7,8 @@
 [node name="Game Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -3.36359
-margin_bottom = -3.36359
+margin_top = -1.47583
+margin_bottom = -1.47583
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -23,7 +23,7 @@ margin_left = 478.478
 margin_top = 1008.81
 margin_right = 562.478
 margin_bottom = 1022.81
-text = "Version 1.3.2"
+text = "Version 1.3.3"
 __meta__ = {
 "_edit_use_anchors_": false
 }

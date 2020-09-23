@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://art/play.png" type="Texture" id=1]
 [ext_resource path="res://scripts/level_description_screen.gd" type="Script" id=2]
+[ext_resource path="res://fonts/kenney_blocks.tres" type="DynamicFont" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "slide_out"
@@ -28,7 +29,7 @@ margin_left = 47.1435
 margin_top = 246.942
 margin_right = 430.143
 margin_bottom = 578.942
-color = Color( 0.74902, 1, 0.635294, 1 )
+color = Color( 0.113725, 0.364706, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -38,6 +39,7 @@ margin_left = 85.3071
 margin_top = 298.575
 margin_right = 486.307
 margin_bottom = 429.575
+custom_fonts/font = ExtResource( 3 )
 text = "Level Description
 Bla bla bla"
 __meta__ = {

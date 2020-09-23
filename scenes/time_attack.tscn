@@ -86,7 +86,7 @@ transform = Transform2D( 1, 0, 0, 1, 567, 0 )
 [node name="fail_holder" parent="." instance=ExtResource( 10 )]
 
 [node name="fail_timer" parent="fail_holder" instance=ExtResource( 12 )]
-time_needed = 10
+time_needed = 100
 
 [node name="level_description_screen" parent="." instance=ExtResource( 13 )]
 offset = Vector2( 0, 0 )
@@ -95,15 +95,15 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
 autoplay = true
-[connection signal="check_goal" from="grid" to="top_ui" method="_on_grid_check_goal"]
 [connection signal="check_goal" from="grid" to="goal_holder" method="_on_grid_check_goal"]
+[connection signal="check_goal" from="grid" to="top_ui" method="_on_grid_check_goal"]
 [connection signal="damage_ice" from="grid" to="ice_holder" method="_on_grid_damage_ice"]
 [connection signal="game_over" from="grid" to="game_over_screen" method="_on_grid_game_over"]
 [connection signal="make_ice" from="grid" to="ice_holder" method="_on_grid_make_ice"]
 [connection signal="setup_max_score" from="grid" to="top_ui" method="_on_grid_setup_max_score"]
 [connection signal="update_counter" from="grid" to="top_ui" method="_on_grid_update_counter"]
-[connection signal="update_score" from="grid" to="top_ui" method="_on_grid_update_score"]
 [connection signal="update_score" from="grid" to="goal_holder" method="_on_grid_update_score"]
+[connection signal="update_score" from="grid" to="top_ui" method="_on_grid_update_score"]
 [connection signal="timeout" from="destroy_timer" to="grid" method="_on_destroy_timer_timeout"]
 [connection signal="timeout" from="collapse_timer" to="grid" method="_on_collapse_timer_timeout"]
 [connection signal="timeout" from="refill_timer" to="grid" method="_on_rifill_timer_timeout"]

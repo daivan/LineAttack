@@ -10,14 +10,12 @@ func _ready():
 
 
 func _on_Main_settings_pressed():
-	print('hejsan44');
 	$Main.slide_out()
 	$Settings.slide_in()
 	
 
 
 func _on_Settings_back_button():
-	print('hejsan22');
 	$Main.slide_in()
 	$Settings.slide_out()
 
