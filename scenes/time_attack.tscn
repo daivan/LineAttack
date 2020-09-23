@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://art/bottom_ui.png" type="Texture" id=1]
 [ext_resource path="res://scenes/top_ui.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://scenes/game_win.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/fail_timer.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/level_description_screen.tscn" type="PackedScene" id=13]
+[ext_resource path="res://music/gameplay.ogg" type="AudioStream" id=14]
 
 [node name="game_window" type="Node2D"]
 
@@ -91,6 +92,10 @@ time_needed = 10
 [node name="level_description_screen" parent="." instance=ExtResource( 13 )]
 offset = Vector2( 0, 0 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+autoplay = true
 [connection signal="check_goal" from="grid" to="top_ui" method="_on_grid_check_goal"]
 [connection signal="check_goal" from="grid" to="goal_holder" method="_on_grid_check_goal"]
 [connection signal="damage_ice" from="grid" to="ice_holder" method="_on_grid_damage_ice"]
