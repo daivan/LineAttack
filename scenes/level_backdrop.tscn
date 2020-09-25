@@ -13,9 +13,14 @@ __meta__ = {
 
 [node name="level_button" parent="." instance=ExtResource( 2 )]
 position = Vector2( 34.0529, 8.28314 )
+level = 1
+level_to_load = "res://scenes/levels/level_1.tscn"
+enabled = true
 
 [node name="level_button2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 355.254, 56.1412 )
+level = 2
 
 [node name="level_button3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 71.7872, 284.387 )
+level = 3
