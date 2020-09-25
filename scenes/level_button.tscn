@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://art/ui/empty_star.png" type="Texture" id=1]
+[ext_resource path="res://art/ui/redbutton.png" type="Texture" id=2]
+[ext_resource path="res://fonts/kenney_blocks.tres" type="DynamicFont" id=3]
+
+[node name="level_button" type="Node2D"]
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TextureButton"]
+margin_left = 12.0127
+margin_top = 6.00634
+margin_right = 52.0127
+margin_bottom = 47.0063
+custom_fonts/font = ExtResource( 3 )
+text = "01"
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 28.697, 103.776 )
+texture = ExtResource( 1 )
