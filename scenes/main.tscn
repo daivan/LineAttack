@@ -17,7 +17,7 @@ expand = true
 
 [node name="Buttons" parent="MarginContainer/GraphicsAndButtons" index="1"]
 margin_top = 518.0
-margin_bottom = 846.0
+margin_bottom = 746.0
 
 [node name="button1" parent="MarginContainer/GraphicsAndButtons/Buttons" index="0"]
 margin_bottom = 80.0
@@ -26,32 +26,12 @@ texture_normal = ExtResource( 3 )
 expand = true
 stretch_mode = 3
 
-[node name="button 1,5" type="TextureButton" parent="MarginContainer/GraphicsAndButtons/Buttons" index="1"]
+[node name="button2" parent="MarginContainer/GraphicsAndButtons/Buttons" index="1"]
 margin_top = 100.0
-margin_right = 536.0
-margin_bottom = 180.0
-rect_min_size = Vector2( 0, 80 )
-texture_normal = ExtResource( 3 )
-expand = true
-stretch_mode = 3
-
-[node name="Label" type="Label" parent="MarginContainer/GraphicsAndButtons/Buttons/button 1,5" index="0"]
-margin_left = 222.236
-margin_top = 49.5511
-margin_right = 758.236
-margin_bottom = 63.5511
-text = "Time attack + Music"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="button2" parent="MarginContainer/GraphicsAndButtons/Buttons" index="2"]
-margin_top = 200.0
-margin_bottom = 328.0
+margin_bottom = 228.0
 rect_min_size = Vector2( 512, 128 )
 texture_normal = ExtResource( 4 )
 expand = true
 stretch_mode = 3
 [connection signal="pressed" from="MarginContainer/GraphicsAndButtons/Buttons/button1" to="." method="_on_button1_pressed"]
-[connection signal="pressed" from="MarginContainer/GraphicsAndButtons/Buttons/button 1,5" to="." method="_on_button_15_pressed"]
 [connection signal="pressed" from="MarginContainer/GraphicsAndButtons/Buttons/button2" to="." method="_on_button2_pressed"]
