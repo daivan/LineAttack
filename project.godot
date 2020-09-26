@@ -20,6 +20,10 @@ run/main_scene="res://scenes/game_menu.tscn"
 boot_splash/image="res://art/splashscreen.png"
 config/icon="res://art/pieces/ice_holder.png"
 
+[autoload]
+
+game_data_manager="*res://scripts/game_data_manager.gd"
+
 [display]
 
 window/size/width=576
