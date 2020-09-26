@@ -16,6 +16,8 @@ onready var start = $Sprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if game_data_manager.level_information.has(level):
+		enabled = game_data_manager.level_information[level]['unlocked'];
 	setup();
 
 
