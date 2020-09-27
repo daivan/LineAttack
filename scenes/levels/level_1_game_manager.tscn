@@ -104,8 +104,8 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 stream = ExtResource( 14 )
 autoplay = true
 [connection signal="set_dimensions" from="game_manager" to="grid" method="_on_game_manager_set_dimensions"]
-[connection signal="set_score_information" from="game_manager" to="top_ui" method="_on_game_manager_set_score_information"]
-[connection signal="set_time_information" from="game_manager" to="top_ui" method="_on_game_manager_set_time_information"]
+[connection signal="update_score_information" from="game_manager" to="top_ui" method="_on_game_manager_update_score_information"]
+[connection signal="update_score_information" from="game_manager" to="goal_holder" method="_on_game_manager_update_score_information"]
 [connection signal="check_goal" from="grid" to="top_ui" method="_on_grid_check_goal"]
 [connection signal="check_goal" from="grid" to="goal_holder" method="_on_grid_check_goal"]
 [connection signal="damage_ice" from="grid" to="ice_holder" method="_on_grid_damage_ice"]
@@ -114,7 +114,6 @@ autoplay = true
 [connection signal="setup_max_score" from="grid" to="top_ui" method="_on_grid_setup_max_score"]
 [connection signal="update_counter" from="grid" to="top_ui" method="_on_grid_update_counter"]
 [connection signal="update_score" from="grid" to="game_manager" method="_on_grid_update_score"]
-[connection signal="update_score" from="grid" to="goal_holder" method="_on_grid_update_score"]
 [connection signal="timeout" from="destroy_timer" to="grid" method="_on_destroy_timer_timeout"]
 [connection signal="timeout" from="collapse_timer" to="grid" method="_on_collapse_timer_timeout"]
 [connection signal="timeout" from="refill_timer" to="grid" method="_on_rifill_timer_timeout"]

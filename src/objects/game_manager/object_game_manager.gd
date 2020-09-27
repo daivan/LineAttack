@@ -18,7 +18,7 @@ export (int) var points_per_piece
 
 # Signals
 signal set_dimensions
-signal set_score_information
+signal update_score_information
 signal set_time_information
 
 
@@ -32,12 +32,12 @@ func setup():
 	if game_data_manager.level_information.has(level):
 		if game_data_manager.level_information[level].has("high_score"):
 			current_high_score = game_data_manager.level_information[level]["high_score"]
-	emit_signal("set_score_information", max_score, current_score)
+	emit_signal("update_score_information", max_score, current_score)
 	emit_signal("set_dimensions", width, height)
 
 
 
 func _on_grid_update_score(streak_value):
 	current_score += streak_value * points_per_piece
-	emit_signal("set_score_information", max_score, current_score)
+	emit_signal("update_score_information", max_score, current_score)
 	pass # Replace with function body.

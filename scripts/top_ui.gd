@@ -73,7 +73,12 @@ func _on_second_timer_timeout():
 	pass # Replace with function body.
 
 
-func _on_game_manager_set_score_information(max_score, current_score):
+
+func _on_game_manager_set_time_information():
+	pass # Replace with function body.
+
+
+func _on_game_manager_update_score_information(max_score, current_score):
 	if !score_bar:
 		score_bar = $MarginContainer/HBoxContainer/VBoxContainer/TextureProgress
 	if !score_label:
@@ -82,8 +87,3 @@ func _on_game_manager_set_score_information(max_score, current_score):
 	score_bar.max_value = max_score
 	score_bar.value = current_score
 	score_label.text = String(current_score)
-
-
-
-func _on_game_manager_set_time_information():
-	pass # Replace with function body.

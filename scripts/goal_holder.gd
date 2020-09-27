@@ -40,3 +40,12 @@ func _on_grid_update_score(amount_to_change):
 			current.update_score(amount_to_change)
 				
 	pass # Replace with function body.
+
+
+func _on_game_manager_update_score_information(max_score, current_score):
+	for i in get_child_count():
+		var current = get_child(i)
+		if(current.goal_type == "score"):
+			current.update_score(current_score)
+				
+	pass # Replace with function body.
