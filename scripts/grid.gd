@@ -5,8 +5,8 @@ enum {wait, move}
 var state;
 
 # Grid variables
-export (int) var width;
-export (int) var height;
+var width;
+var height;
 export (int) var x_start;
 export (int) var y_start;
 export (int) var offset;
@@ -357,4 +357,10 @@ func _on_level_description_screen_start_level():
 
 func _on_fail_holder_game_lost():
 	state = wait;
+	pass # Replace with function body.
+
+
+func _on_game_manager_set_dimensions(new_width, new_height):
+	width = new_width
+	height = new_height
 	pass # Replace with function body.

@@ -18,7 +18,7 @@ var current_timer = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_on_grid_update_score(current_score);
+	#_on_grid_update_score(current_score);
 	pass # Replace with function body.
 
 func setup_score_bar(max_score):
@@ -27,10 +27,12 @@ func setup_score_bar(max_score):
 func update_score_bar():
 	score_bar.value = current_score;
 
+"""
 func _on_grid_update_score(amount_to_change):
 	current_score += amount_to_change;
 	update_score_bar();
 	score_label.text = String(current_score);
+"""
 
 func make_goal(new_max, new_texture, new_value):
 	var current = goal_prefab.instance()
@@ -65,7 +67,18 @@ func _on_fail_holder_create_fail(fail_timer):
 	pass # Replace with function body.
 
 
-func _on_second_timer_timeout():
-	current_timer = current_timer - 1;
+func _on_game_manager_update_score_information(max_score, current_score):
+	if !score_bar:
+		score_bar = $MarginContainer/HBoxContainer/VBoxContainer/TextureProgress
+	if !score_label:
+		score_label = $MarginContainer/HBoxContainer/VBoxContainer/ScoreLabel
+		
+	score_bar.max_value = max_score
+	score_bar.value = current_score
+	score_label.text = String(current_score)
+
+
+func _on_game_manager_update_time_information(time_left, current_time):
+	current_timer = time_left - current_time;
 	timer_label.text = str(current_timer);
 	pass # Replace with function body.

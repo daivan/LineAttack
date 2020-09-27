@@ -18,7 +18,6 @@ func _on_grid_game_over():
 	pass # Replace with function body.
 
 
-func _on_fail_holder_game_lost():
-	get_node('../second_timer').stop();
-	slide_in();
+func _on_game_manager_game_lost():
+	slide_in();	
 	pass # Replace with function body.

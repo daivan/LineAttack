@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://art/play.png" type="Texture" id=1]
+[ext_resource path="res://src/resources/graphics/sprites/play.png" type="Texture" id=1]
 [ext_resource path="res://scripts/level_description_screen.gd" type="Script" id=2]
 [ext_resource path="res://src/resources/fonts/kenney_blocks.tres" type="DynamicFont" id=3]
+
 
 
 

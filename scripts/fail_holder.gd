@@ -25,8 +25,7 @@ func fails_met():
 	return true;
 	
 
-func _on_second_timer_timeout():
-
+func _on_game_manager_update_time_information():
 	for i in get_child_count():
 		var current = get_child(i)
 		if(current.fail_type == "timer"):
