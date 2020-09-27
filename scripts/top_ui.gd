@@ -67,17 +67,6 @@ func _on_fail_holder_create_fail(fail_timer):
 	pass # Replace with function body.
 
 
-func _on_second_timer_timeout():
-	current_timer = current_timer - 1;
-	timer_label.text = str(current_timer);
-	pass # Replace with function body.
-
-
-
-func _on_game_manager_set_time_information():
-	pass # Replace with function body.
-
-
 func _on_game_manager_update_score_information(max_score, current_score):
 	if !score_bar:
 		score_bar = $MarginContainer/HBoxContainer/VBoxContainer/TextureProgress
@@ -87,3 +76,9 @@ func _on_game_manager_update_score_information(max_score, current_score):
 	score_bar.max_value = max_score
 	score_bar.value = current_score
 	score_label.text = String(current_score)
+
+
+func _on_game_manager_update_time_information(time_left, current_time):
+	current_timer = time_left - current_time;
+	timer_label.text = str(current_timer);
+	pass # Replace with function body.

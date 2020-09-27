@@ -20,7 +20,7 @@ enabled = true
 [node name="level_button2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 355.254, 56.1412 )
 level = 2
-level_to_load = "res://scenes/levels/level_1_game_manager.tscn"
+level_to_load = "res://scenes/levels/level_2.tscn"
 
 [node name="level_button3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 71.7872, 284.387 )
