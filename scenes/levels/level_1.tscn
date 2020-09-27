@@ -13,7 +13,8 @@
 [ext_resource path="res://scenes/game_win.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/fail_timer.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/level_description_screen.tscn" type="PackedScene" id=13]
-[ext_resource path="res://music/gameplay.ogg" type="AudioStream" id=14]
+[ext_resource path="res://src/resources/audio/music/gameplay.ogg" type="AudioStream" id=14]
+
 
 [node name="game_window" type="Node2D"]
 
