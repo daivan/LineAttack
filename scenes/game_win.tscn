@@ -1,8 +1,11 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://art/ui/game_win.png" type="Texture" id=1]
-[ext_resource path="res://art/play.png" type="Texture" id=2]
+[ext_resource path="res://src/resources/graphics/interface/game_win.png" type="Texture" id=1]
+[ext_resource path="res://src/resources/graphics/sprites/play.png" type="Texture" id=2]
 [ext_resource path="res://scenes/game_win.gd" type="Script" id=3]
+
+
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "slide_in"
