@@ -14,6 +14,7 @@ func create_goals():
 
 func check_game_win():
 	if goals_met():
+		
 		emit_signal("game_won");
 
 func goals_met():
@@ -49,3 +50,6 @@ func _on_game_manager_update_score_information(max_score, current_score):
 			current.update_score(current_score)
 				
 	pass # Replace with function body.
+
+
+	
