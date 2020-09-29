@@ -1,0 +1,127 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://scenes/game_over.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/goal_background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/resources/graphics/sprites/bottom_ui.png" type="Texture" id=3]
+[ext_resource path="res://src/resources/graphics/sprites/background.png" type="Texture" id=4]
+[ext_resource path="res://scenes/fail_holder.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/fail_timer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/goal_holder.gd" type="Script" id=7]
+[ext_resource path="res://scripts/grid.gd" type="Script" id=8]
+[ext_resource path="res://src/sceens/win/sceen_win.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/objects/game_manager/object_game_manager.gd" type="Script" id=10]
+[ext_resource path="res://scenes/ice_holder.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/top_ui.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/level_description_screen.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/resources/audio/music/gameplay.ogg" type="AudioStream" id=14]
+[ext_resource path="res://scenes/goal_score.tscn" type="PackedScene" id=15]
+
+[node name="game_window" type="Node2D"]
+
+[node name="game_manager" type="Node" parent="."]
+script = ExtResource( 10 )
+width = 5
+height = 6
+level = 5
+time_left = 10
+max_score = 1000
+points_per_piece = 10
+
+[node name="background" type="TextureRect" parent="."]
+margin_top = -0.244934
+margin_right = 576.0
+margin_bottom = 1023.76
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bottom_ui" type="TextureRect" parent="."]
+margin_top = 824.0
+margin_right = 576.0
+margin_bottom = 1024.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="top_ui" parent="." instance=ExtResource( 12 )]
+goal_prefab = ExtResource( 2 )
+
+[node name="grid" type="Node2D" parent="."]
+script = ExtResource( 8 )
+x_start = 64
+y_start = 800
+offset = 64
+y_offset = 2
+empty_spaces = PoolVector2Array( 0, 0, 7, 0, 0, 9, 7, 9, 0, 0, 4, 3, 0, 0, 0, 0 )
+ice_spaces = PoolVector2Array( 3, 0, 4, 0, 0, 0, 0, 0 )
+max_score = 300
+piece_value = 10
+current_counter_value = 50
+is_moves = true
+
+[node name="ice_holder" parent="." instance=ExtResource( 11 )]
+
+[node name="destroy_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="collapse_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="refill_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="second_timer" type="Timer" parent="."]
+
+[node name="fail_holder" parent="." instance=ExtResource( 5 )]
+
+[node name="fail_timer" parent="fail_holder" instance=ExtResource( 6 )]
+time_needed = 5
+
+[node name="goal_holder" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="goal_score" parent="goal_holder" instance=ExtResource( 15 )]
+score_needed = 1000
+
+[node name="game_over_screen" parent="." instance=ExtResource( 1 )]
+offset = Vector2( 567, 0 )
+transform = Transform2D( 1, 0, 0, 1, 567, 0 )
+
+[node name="level_description_screen" parent="." instance=ExtResource( 13 )]
+offset = Vector2( 0, 0 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="sceen_win" parent="." instance=ExtResource( 9 )]
+offset = Vector2( 567, 0 )
+transform = Transform2D( 1, 0, 0, 1, 567, 0 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+autoplay = true
+[connection signal="game_lost" from="game_manager" to="game_over_screen" method="_on_game_manager_game_lost"]
+[connection signal="set_dimensions" from="game_manager" to="grid" method="_on_game_manager_set_dimensions"]
+[connection signal="update_score_information" from="game_manager" to="top_ui" method="_on_game_manager_update_score_information"]
+[connection signal="update_score_information" from="game_manager" to="goal_holder" method="_on_game_manager_update_score_information"]
+[connection signal="update_time_information" from="game_manager" to="top_ui" method="_on_game_manager_update_time_information"]
+[connection signal="check_goal" from="grid" to="top_ui" method="_on_grid_check_goal"]
+[connection signal="check_goal" from="grid" to="goal_holder" method="_on_grid_check_goal"]
+[connection signal="damage_ice" from="grid" to="ice_holder" method="_on_grid_damage_ice"]
+[connection signal="game_over" from="grid" to="game_over_screen" method="_on_grid_game_over"]
+[connection signal="make_ice" from="grid" to="ice_holder" method="_on_grid_make_ice"]
+[connection signal="setup_max_score" from="grid" to="top_ui" method="_on_grid_setup_max_score"]
+[connection signal="update_counter" from="grid" to="top_ui" method="_on_grid_update_counter"]
+[connection signal="update_score" from="grid" to="game_manager" method="_on_grid_update_score"]
+[connection signal="timeout" from="destroy_timer" to="grid" method="_on_destroy_timer_timeout"]
+[connection signal="timeout" from="collapse_timer" to="grid" method="_on_collapse_timer_timeout"]
+[connection signal="timeout" from="refill_timer" to="grid" method="_on_rifill_timer_timeout"]
+[connection signal="timeout" from="second_timer" to="game_manager" method="_on_second_timer_timeout"]
+[connection signal="create_goal" from="goal_holder" to="top_ui" method="_on_goal_holder_create_goal"]
+[connection signal="game_won" from="goal_holder" to="game_manager" method="_on_goal_holder_game_won"]
+[connection signal="game_won" from="goal_holder" to="grid" method="_on_goal_holder_game_won"]
+[connection signal="game_won" from="goal_holder" to="sceen_win" method="_on_goal_holder_game_won"]
+[connection signal="start_level" from="level_description_screen" to="grid" method="_on_level_description_screen_start_level"]

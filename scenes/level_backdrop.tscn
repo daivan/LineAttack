@@ -11,17 +11,48 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="level_button" parent="." instance=ExtResource( 2 )]
+[node name="level_button1" parent="." instance=ExtResource( 2 )]
 position = Vector2( 34.0529, 8.28314 )
 level = 1
-level_to_load = "res://scenes/levels/level_1.tscn"
+level_to_load = "res://src/levels/level_01/level_01.tscn"
 enabled = true
 
 [node name="level_button2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 355.254, 56.1412 )
 level = 2
-level_to_load = "res://scenes/levels/level_2.tscn"
+level_to_load = "res://src/levels/level_02/level_02.tscn"
 
 [node name="level_button3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 71.7872, 284.387 )
 level = 3
+level_to_load = "res://src/levels/level_03/level_03.tscn"
+
+[node name="level_button4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 209.839, 473.979 )
+level = 4
+level_to_load = "res://src/levels/level_04/level_04.tscn"
+
+[node name="level_button5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 457.413, 808.985 )
+level = 5
+level_to_load = "res://src/levels/level_05/level_05.tscn"
+
+[node name="level_button6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 457.413, 1070.36 )
+level = 6
+level_to_load = "res://src/levels/level_06/level_06.tscn"
+
+[node name="level_button7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 214.441, 1306.89 )
+level = 7
+level_to_load = "res://src/levels/level_07/level_07.tscn"
+
+[node name="level_button8" parent="." instance=ExtResource( 2 )]
+position = Vector2( 82.8314, 1640.06 )
+level = 8
+level_to_load = "res://src/levels/level_08/level_08.tscn"
+
+[node name="level_button9" parent="." instance=ExtResource( 2 )]
+position = Vector2( 78.2296, 1864.62 )
+level = 9
+level_to_load = "res://src/levels/level_09/level_09.tscn"

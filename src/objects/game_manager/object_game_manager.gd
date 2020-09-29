@@ -62,3 +62,17 @@ func game_lost_by_time() -> bool:
 		return true
 	return false
 	
+
+
+func _on_goal_holder_game_won():
+
+	game_data_manager.level_information[level+1] ={
+		"unlocked": true,
+		"high_score": 0,
+		"stars_unlocked": 0
+	} 
+	print("we wonn broo")
+	print(game_data_manager.level_information)
+	game_data_manager.save_data();
+	var level_test = game_data_manager.load_data()
+	print(level_test)
