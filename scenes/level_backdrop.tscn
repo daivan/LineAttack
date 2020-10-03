@@ -14,7 +14,7 @@ __meta__ = {
 [node name="level_button1" parent="." instance=ExtResource( 2 )]
 position = Vector2( 34.0529, 8.28314 )
 level = 1
-level_to_load = "res://src/levels/level_01/level_01.tscn"
+level_to_load = "res://src/levels/level_01/dialogue_01.tscn"
 enabled = true
 
 [node name="level_button2" parent="." instance=ExtResource( 2 )]
