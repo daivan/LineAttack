@@ -2,7 +2,6 @@
 
 [ext_resource path="res://assets/fonts/kenney_blocks.ttf" type="DynamicFontData" id=1]
 
-
 [resource]
 size = 27
 outline_color = Color( 0, 0, 0, 1 )
