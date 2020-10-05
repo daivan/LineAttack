@@ -105,11 +105,11 @@ stream = ExtResource( 14 )
 autoplay = true
 [connection signal="game_lost" from="game_manager" to="game_over_screen" method="_on_game_manager_game_lost"]
 [connection signal="set_dimensions" from="game_manager" to="grid" method="_on_game_manager_set_dimensions"]
-[connection signal="update_score_information" from="game_manager" to="goal_holder" method="_on_game_manager_update_score_information"]
 [connection signal="update_score_information" from="game_manager" to="top_ui" method="_on_game_manager_update_score_information"]
+[connection signal="update_score_information" from="game_manager" to="goal_holder" method="_on_game_manager_update_score_information"]
 [connection signal="update_time_information" from="game_manager" to="top_ui" method="_on_game_manager_update_time_information"]
-[connection signal="check_goal" from="grid" to="goal_holder" method="_on_grid_check_goal"]
 [connection signal="check_goal" from="grid" to="top_ui" method="_on_grid_check_goal"]
+[connection signal="check_goal" from="grid" to="goal_holder" method="_on_grid_check_goal"]
 [connection signal="damage_ice" from="grid" to="ice_holder" method="_on_grid_damage_ice"]
 [connection signal="game_over" from="grid" to="game_over_screen" method="_on_grid_game_over"]
 [connection signal="make_ice" from="grid" to="ice_holder" method="_on_grid_make_ice"]

@@ -157,10 +157,12 @@ func touch_input():
 	if Input.is_action_just_pressed("ui_touch"):
 		if is_in_grid(pixel_to_grid(get_global_mouse_position().x, get_global_mouse_position().y)):
 			first_touch = pixel_to_grid(get_global_mouse_position().x, get_global_mouse_position().y);
+			all_pieces[first_touch.x][first_touch.y].modulate = Color(1, 1, 1, 0.7);
 			controlling = true;
 		
 	if Input.is_action_just_released("ui_touch"):
 		if is_in_grid(pixel_to_grid(get_global_mouse_position().x, get_global_mouse_position().y)) && controlling:
+			all_pieces[first_touch.x][first_touch.y].modulate = Color(1, 1, 1, 1);
 			controlling = false;
 			final_touch = pixel_to_grid(get_global_mouse_position().x, get_global_mouse_position().y);
 			touch_difference(first_touch, final_touch);
