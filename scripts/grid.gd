@@ -44,6 +44,7 @@ var final_touch = Vector2(0 ,0);
 var controlling = false;
 
 # Scoring Variables
+signal found_match
 signal update_score
 signal setup_max_score
 export(int) var max_score
@@ -228,13 +229,15 @@ func find_matches():
 							match_and_dim(all_pieces[i + 1][j]);
 							match_and_dim(all_pieces[i][j]);
 							match_and_dim(all_pieces[i - 1][j]);
+							print('found match');
 				if j> 0 && j < height - 1:
 					if !is_piece_null(i,j + 1) && !is_piece_null(i,j - 1):
 						if current_color == all_pieces[i][j+1].color && current_color == all_pieces[i][j-1].color:
 							match_and_dim(all_pieces[i][j+1]);
 							match_and_dim(all_pieces[i][j]);
 							match_and_dim(all_pieces[i][j-1]);
-							
+							print('found match YO YO');
+
 	get_parent().get_node("destroy_timer").start();
 
 func is_piece_null(column, row):
@@ -262,6 +265,7 @@ func destroy_matched():
 					make_effect(particle_effect, i, j);
 					make_effect(animated_effect, i, j);
 					emit_signal("update_score", piece_value * streak);
+					emit_signal("found_match", i, j);
 	move_checked = true;
 	if was_matched:
 		get_parent().get_node("collapse_timer").start();
