@@ -18,9 +18,11 @@ func _ready():
 	#You could now make changes to the new instance if you wanted
 	#Attach it to the tree
 	enemies.push_back(GrabedInstance);
+	GrabedInstance.position = Vector2(50,50);
 
 	self.add_child(GrabedInstance)
-
+	print(GrabedInstance.z_index);
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
