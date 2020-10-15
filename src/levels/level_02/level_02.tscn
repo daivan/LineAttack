@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/game_over.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/goal_background.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://scenes/level_description_screen.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/resources/audio/music/gameplay.ogg" type="AudioStream" id=14]
 [ext_resource path="res://scenes/goal_score.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/objects/holders/holder_enemy/holder_enemy.tscn" type="PackedScene" id=16]
 
 [node name="game_window" type="Node2D"]
 
@@ -23,9 +24,22 @@ script = ExtResource( 10 )
 width = 6
 height = 6
 level = 2
-time_left = 30
-max_score = 2000
+time_left = 3000
+max_score = 200000
 points_per_piece = 10
+
+[node name="holder_enemy" parent="." instance=ExtResource( 16 )]
+
+[node name="fail_holder" parent="." instance=ExtResource( 5 )]
+
+[node name="fail_timer" parent="fail_holder" instance=ExtResource( 6 )]
+time_needed = 5
+
+[node name="goal_holder" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="goal_score" parent="goal_holder" instance=ExtResource( 15 )]
+score_needed = 100000
 
 [node name="background" type="TextureRect" parent="."]
 margin_top = -0.244934
@@ -77,17 +91,6 @@ one_shot = true
 
 [node name="second_timer" type="Timer" parent="."]
 
-[node name="fail_holder" parent="." instance=ExtResource( 5 )]
-
-[node name="fail_timer" parent="fail_holder" instance=ExtResource( 6 )]
-time_needed = 5
-
-[node name="goal_holder" type="Node" parent="."]
-script = ExtResource( 7 )
-
-[node name="goal_score" parent="goal_holder" instance=ExtResource( 15 )]
-score_needed = 1000
-
 [node name="game_over_screen" parent="." instance=ExtResource( 1 )]
 offset = Vector2( 567, 0 )
 transform = Transform2D( 1, 0, 0, 1, 567, 0 )
@@ -105,12 +108,17 @@ stream = ExtResource( 14 )
 autoplay = true
 [connection signal="game_lost" from="game_manager" to="game_over_screen" method="_on_game_manager_game_lost"]
 [connection signal="set_dimensions" from="game_manager" to="grid" method="_on_game_manager_set_dimensions"]
-[connection signal="update_score_information" from="game_manager" to="goal_holder" method="_on_game_manager_update_score_information"]
 [connection signal="update_score_information" from="game_manager" to="top_ui" method="_on_game_manager_update_score_information"]
+[connection signal="update_score_information" from="game_manager" to="goal_holder" method="_on_game_manager_update_score_information"]
 [connection signal="update_time_information" from="game_manager" to="top_ui" method="_on_game_manager_update_time_information"]
-[connection signal="check_goal" from="grid" to="goal_holder" method="_on_grid_check_goal"]
+[connection signal="create_goal" from="goal_holder" to="top_ui" method="_on_goal_holder_create_goal"]
+[connection signal="game_won" from="goal_holder" to="game_manager" method="_on_goal_holder_game_won"]
+[connection signal="game_won" from="goal_holder" to="sceen_win" method="_on_goal_holder_game_won"]
+[connection signal="game_won" from="goal_holder" to="grid" method="_on_goal_holder_game_won"]
 [connection signal="check_goal" from="grid" to="top_ui" method="_on_grid_check_goal"]
+[connection signal="check_goal" from="grid" to="goal_holder" method="_on_grid_check_goal"]
 [connection signal="damage_ice" from="grid" to="ice_holder" method="_on_grid_damage_ice"]
+[connection signal="found_match" from="grid" to="holder_enemy" method="_on_grid_found_match"]
 [connection signal="game_over" from="grid" to="game_over_screen" method="_on_grid_game_over"]
 [connection signal="make_ice" from="grid" to="ice_holder" method="_on_grid_make_ice"]
 [connection signal="setup_max_score" from="grid" to="top_ui" method="_on_grid_setup_max_score"]
@@ -120,8 +128,4 @@ autoplay = true
 [connection signal="timeout" from="collapse_timer" to="grid" method="_on_collapse_timer_timeout"]
 [connection signal="timeout" from="refill_timer" to="grid" method="_on_rifill_timer_timeout"]
 [connection signal="timeout" from="second_timer" to="game_manager" method="_on_second_timer_timeout"]
-[connection signal="create_goal" from="goal_holder" to="top_ui" method="_on_goal_holder_create_goal"]
-[connection signal="game_won" from="goal_holder" to="game_manager" method="_on_goal_holder_game_won"]
-[connection signal="game_won" from="goal_holder" to="sceen_win" method="_on_goal_holder_game_won"]
-[connection signal="game_won" from="goal_holder" to="grid" method="_on_goal_holder_game_won"]
 [connection signal="start_level" from="level_description_screen" to="grid" method="_on_level_description_screen_start_level"]
