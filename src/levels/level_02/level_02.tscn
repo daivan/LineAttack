@@ -42,6 +42,7 @@ script = ExtResource( 7 )
 score_needed = 100000
 
 [node name="background" type="TextureRect" parent="."]
+show_behind_parent = true
 margin_top = -0.244934
 margin_right = 576.0
 margin_bottom = 1023.76
@@ -60,6 +61,7 @@ __meta__ = {
 }
 
 [node name="top_ui" parent="." instance=ExtResource( 12 )]
+show_behind_parent = true
 goal_prefab = ExtResource( 2 )
 
 [node name="grid" type="Node2D" parent="."]
@@ -112,8 +114,8 @@ autoplay = true
 [connection signal="update_score_information" from="game_manager" to="goal_holder" method="_on_game_manager_update_score_information"]
 [connection signal="update_time_information" from="game_manager" to="top_ui" method="_on_game_manager_update_time_information"]
 [connection signal="create_goal" from="goal_holder" to="top_ui" method="_on_goal_holder_create_goal"]
-[connection signal="game_won" from="goal_holder" to="game_manager" method="_on_goal_holder_game_won"]
 [connection signal="game_won" from="goal_holder" to="sceen_win" method="_on_goal_holder_game_won"]
+[connection signal="game_won" from="goal_holder" to="game_manager" method="_on_goal_holder_game_won"]
 [connection signal="game_won" from="goal_holder" to="grid" method="_on_goal_holder_game_won"]
 [connection signal="check_goal" from="grid" to="top_ui" method="_on_grid_check_goal"]
 [connection signal="check_goal" from="grid" to="goal_holder" method="_on_grid_check_goal"]
