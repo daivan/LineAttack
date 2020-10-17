@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/game_over.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/goal_background.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://src/resources/audio/music/gameplay.ogg" type="AudioStream" id=14]
 [ext_resource path="res://scenes/goal_score.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/objects/holders/holder_enemy/holder_enemy.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/objects/holders/holder_hero/holder_hero.tscn" type="PackedScene" id=17]
 
 [node name="game_window" type="Node2D"]
 
@@ -29,6 +30,9 @@ max_score = 200000
 points_per_piece = 10
 
 [node name="holder_enemy" parent="." instance=ExtResource( 16 )]
+
+[node name="holder_hero" parent="." instance=ExtResource( 17 )]
+position = Vector2( 0, 830 )
 
 [node name="fail_holder" parent="." instance=ExtResource( 5 )]
 
@@ -52,6 +56,7 @@ __meta__ = {
 }
 
 [node name="bottom_ui" type="TextureRect" parent="."]
+show_behind_parent = true
 margin_top = 824.0
 margin_right = 576.0
 margin_bottom = 1024.0
@@ -110,15 +115,15 @@ stream = ExtResource( 14 )
 autoplay = true
 [connection signal="game_lost" from="game_manager" to="game_over_screen" method="_on_game_manager_game_lost"]
 [connection signal="set_dimensions" from="game_manager" to="grid" method="_on_game_manager_set_dimensions"]
-[connection signal="update_score_information" from="game_manager" to="top_ui" method="_on_game_manager_update_score_information"]
 [connection signal="update_score_information" from="game_manager" to="goal_holder" method="_on_game_manager_update_score_information"]
+[connection signal="update_score_information" from="game_manager" to="top_ui" method="_on_game_manager_update_score_information"]
 [connection signal="update_time_information" from="game_manager" to="top_ui" method="_on_game_manager_update_time_information"]
 [connection signal="create_goal" from="goal_holder" to="top_ui" method="_on_goal_holder_create_goal"]
-[connection signal="game_won" from="goal_holder" to="sceen_win" method="_on_goal_holder_game_won"]
 [connection signal="game_won" from="goal_holder" to="game_manager" method="_on_goal_holder_game_won"]
+[connection signal="game_won" from="goal_holder" to="sceen_win" method="_on_goal_holder_game_won"]
 [connection signal="game_won" from="goal_holder" to="grid" method="_on_goal_holder_game_won"]
-[connection signal="check_goal" from="grid" to="top_ui" method="_on_grid_check_goal"]
 [connection signal="check_goal" from="grid" to="goal_holder" method="_on_grid_check_goal"]
+[connection signal="check_goal" from="grid" to="top_ui" method="_on_grid_check_goal"]
 [connection signal="damage_ice" from="grid" to="ice_holder" method="_on_grid_damage_ice"]
 [connection signal="found_match" from="grid" to="holder_enemy" method="_on_grid_found_match"]
 [connection signal="game_over" from="grid" to="game_over_screen" method="_on_grid_game_over"]
