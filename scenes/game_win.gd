@@ -13,3 +13,8 @@ func _on_goal_holder_game_won():
 
 func _on_TextureButton_pressed():
 	get_tree().change_scene("res://scenes/level_select_scene.tscn");
+
+
+# Emit signal coming from holder_enemy
+func _on_holder_enemy_all_enemies_dead():
+	slide_in()

@@ -31,6 +31,10 @@ points_per_piece = 10
 
 [node name="holder_enemy" parent="." instance=ExtResource( 16 )]
 
+[node name="sceen_win" parent="." instance=ExtResource( 9 )]
+offset = Vector2( 567, 0 )
+transform = Transform2D( 1, 0, 0, 1, 567, 0 )
+
 [node name="holder_hero" parent="." instance=ExtResource( 17 )]
 position = Vector2( 0, 830 )
 
@@ -105,10 +109,6 @@ transform = Transform2D( 1, 0, 0, 1, 567, 0 )
 [node name="level_description_screen" parent="." instance=ExtResource( 13 )]
 offset = Vector2( 0, 0 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-
-[node name="sceen_win" parent="." instance=ExtResource( 9 )]
-offset = Vector2( 567, 0 )
-transform = Transform2D( 1, 0, 0, 1, 567, 0 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
