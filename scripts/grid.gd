@@ -63,6 +63,7 @@ signal check_goal
 # Effects
 var particle_effect = preload("res://scenes/particle_effect.tscn");
 var animated_effect = preload("res://scenes/animated_explosion.tscn");
+var light_scene = preload("res://scenes/Light.tscn");
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -73,9 +74,18 @@ func _ready():
 	spawn_ice();
 	emit_signal("update_counter", current_counter_value);
 	emit_signal("setup_max_score", max_score);
+	set_light()
+	
 	if !is_moves:
 		$Timer.start();
-	
+		
+func set_light():
+	var light = light_scene.instance()
+	add_child(light)
+	var light_pos_x = get_parent().get_node("top_ui").rect_size[0]/2
+	var light_pos_y = get_parent().get_node("top_ui").rect_size[1]+light.get_child(0).texture.get_size()[1]*light.get_child(0).scale[1]/2
+	light.position=Vector2(light_pos_x,light_pos_y)
+
 func restricted_fill(place):
 	# Check the empty pices
 	if is_in_array(empty_spaces, place):
@@ -260,10 +270,11 @@ func destroy_matched():
 					emit_signal("check_goal", all_pieces[i][j].color);
 					emit_signal("damage_ice",Vector2(i,j))
 					was_matched = true;
-					all_pieces[i][j].queue_free();
+					#all_pieces[i][j].queue_free();
+					all_pieces[i][j].destroy();
 					all_pieces[i][j] = null;
-					make_effect(particle_effect, i, j);
-					make_effect(animated_effect, i, j);
+					#make_effect(particle_effect, i, j);
+					#make_effect(animated_effect, i, j);
 					emit_signal("update_score", piece_value * streak);
 					emit_signal("found_match", i, j);
 	move_checked = true;

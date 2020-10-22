@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/resources/graphics/sprites/effects/topDownLight.png" type="Texture" id=1]
+
+[node name="Light" type="Node2D"]
+
+[node name="Light2D" type="Light2D" parent="."]
+scale = Vector2( 4, 7 )
+texture = ExtResource( 1 )

@@ -7,11 +7,6 @@
 [ext_resource path="res://src/resources/graphics/interface/greenbutton.png" type="Texture" id=5]
 [ext_resource path="res://src/resources/graphics/interface/filled_star.png" type="Texture" id=6]
 
-
-
-
-
-
 [node name="level_button" type="Node2D"]
 script = ExtResource( 4 )
 blocked_texture = ExtResource( 2 )
