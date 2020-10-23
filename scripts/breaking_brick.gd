@@ -27,6 +27,7 @@ func setBrickColor(color : String) -> void:
 	
 func destroyBrick() -> void:
 	timer.start()
+	
 
 func _on_Timer_timeout():
 	counter += 1

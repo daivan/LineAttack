@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://src/resources/graphics/sprites/tile_sheet_shade.png" type="Texture" id=3]
-[ext_resource path="res://src/resources/graphics/sprites/tile_sheet_normal_map.png" type="Texture" id=4]
-[ext_resource path="res://scripts/BreakingBrick.gd" type="Script" id=5]
+[ext_resource path="res://src/resources/graphics/sprites/tile_sheet_shade.png" type="Texture" id=1]
+[ext_resource path="res://src/resources/graphics/sprites/tile_sheet_normal_map.png" type="Texture" id=2]
+[ext_resource path="res://scripts/breaking_brick.gd" type="Script" id=3]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 particles_animation = true
@@ -18,12 +18,12 @@ _data = [ Vector2( 0, 98.1818 ), 0.0, 0.0, 0, 0, Vector2( 0.994253, -130.909 ), 
 [sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.494253, 0.0363636 ), 0.0, 0.0, 0, 0, Vector2( 0.994253, 0 ), 0.0, 0.0, 0, 0 ]
 
-[node name="BreakingBrick" type="Node2D"]
-script = ExtResource( 5 )
+[node name="breaking_brick" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 3 )
-normal_map = ExtResource( 4 )
+texture = ExtResource( 1 )
+normal_map = ExtResource( 2 )
 vframes = 2
 hframes = 2
 frame = 1
@@ -38,8 +38,8 @@ amount = 16
 lifetime = 2.0
 preprocess = 0.1
 explosiveness = 1.0
-texture = ExtResource( 3 )
-normalmap = ExtResource( 4 )
+texture = ExtResource( 1 )
+normalmap = ExtResource( 2 )
 emission_shape = 2
 emission_rect_extents = Vector2( 64, 64 )
 direction = Vector2( 0, 2 )

@@ -1,7 +1,7 @@
 extends Node2D
 
 export (String) var color;
-var brickScene = preload("res://scenes/BreakingBrick.tscn")
+var brickScene = preload("res://scenes/breaking_brick.tscn")
 var brick
 
 var move_tween;
@@ -32,3 +32,4 @@ func dim():
 
 func destroy():
 	brick.destroyBrick()
+	brick.z_index=1

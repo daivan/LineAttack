@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/topDownLight.png-48aa25229fd775a23ae1e289fac718fa.stex"
+path="res://.import/top_down_light.png-6da72949a7dde75f965ab8159040b0bf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/resources/graphics/sprites/effects/topDownLight.png"
-dest_files=[ "res://.import/topDownLight.png-48aa25229fd775a23ae1e289fac718fa.stex" ]
+source_file="res://src/resources/graphics/sprites/effects/top_down_light.png"
+dest_files=[ "res://.import/top_down_light.png-6da72949a7dde75f965ab8159040b0bf.stex" ]
 
 [params]
 
