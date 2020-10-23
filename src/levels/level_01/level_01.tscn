@@ -8,13 +8,14 @@
 [ext_resource path="res://scenes/fail_timer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/goal_holder.gd" type="Script" id=7]
 [ext_resource path="res://scripts/grid.gd" type="Script" id=8]
-[ext_resource path="res://src/sceens/win/sceen_win.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/scenes/win/sceen_win.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/objects/game_manager/object_game_manager.gd" type="Script" id=10]
 [ext_resource path="res://scenes/ice_holder.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/top_ui.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/level_description_screen.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/resources/audio/music/gameplay.ogg" type="AudioStream" id=14]
 [ext_resource path="res://scenes/goal_score.tscn" type="PackedScene" id=15]
+
 
 [node name="game_window" type="Node2D"]
 

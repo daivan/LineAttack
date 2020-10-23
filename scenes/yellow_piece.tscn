@@ -3,9 +3,9 @@
 [ext_resource path="res://scenes/piece.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/resources/graphics/sprites/pieces/yellow.png" type="Texture" id=2]
 
-
 [node name="yellow_piece" instance=ExtResource( 1 )]
 color = "yellow"
 
 [node name="Sprite" parent="." index="0"]
+visible = false
 texture = ExtResource( 2 )
