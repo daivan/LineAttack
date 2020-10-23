@@ -63,7 +63,7 @@ signal check_goal
 # Effects
 var particle_effect = preload("res://scenes/particle_effect.tscn");
 var animated_effect = preload("res://scenes/animated_explosion.tscn");
-var light_scene = preload("res://scenes/Light.tscn");
+var light_scene = preload("res://src/Objects/brick/light.tscn");
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

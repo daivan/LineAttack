@@ -1,7 +1,7 @@
 extends Node2D
 
 export (String) var color;
-var brickScene = preload("res://scenes/breaking_brick.tscn")
+var brickScene = preload("res://src/Objects/brick/breaking_brick.tscn")
 var brick
 
 var move_tween;
