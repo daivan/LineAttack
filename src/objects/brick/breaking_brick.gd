@@ -2,7 +2,7 @@ extends Node2D
 
 onready var brickSprite : Sprite = $Sprite
 onready var timer : Timer = $Timer
-onready var particles : Particles2D = $CPUParticles2D
+onready var particles : CPUParticles2D = $CPUParticles2D
 var counter : int = 0
 var particleOn : bool = false
 var colors = {
