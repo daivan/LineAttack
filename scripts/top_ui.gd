@@ -50,11 +50,6 @@ func _on_grid_setup_max_score(max_score):
 	
 
 
-func _on_goal_holder_create_goal(new_max, new_texture, new_value):
-	make_goal(new_max, new_texture, new_value);
-	pass # Replace with function body.
-
-
 func _on_grid_check_goal(goal_type):
 	for i in goal_container.get_child_count():
 		goal_container.get_child(i).update_goal_values(goal_type);

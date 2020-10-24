@@ -8,7 +8,7 @@
 [ext_resource path="res://scenes/fail_timer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/goal_holder.gd" type="Script" id=7]
 [ext_resource path="res://scripts/grid.gd" type="Script" id=8]
-[ext_resource path="res://src/scenes/win/sceen_win.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/scenes/win/scene_win.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/objects/game_manager/object_game_manager.gd" type="Script" id=10]
 [ext_resource path="res://scenes/ice_holder.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/top_ui.tscn" type="PackedScene" id=12]
@@ -16,15 +16,14 @@
 [ext_resource path="res://src/resources/audio/music/gameplay.ogg" type="AudioStream" id=14]
 [ext_resource path="res://scenes/goal_score.tscn" type="PackedScene" id=15]
 
-
 [node name="game_window" type="Node2D"]
 
 [node name="game_manager" type="Node" parent="."]
 script = ExtResource( 10 )
 width = 5
-height = 6
-level = 5
-time_left = 10
+height = 5
+level = 1
+time_left = 20
 max_score = 1000
 points_per_piece = 10
 
@@ -97,7 +96,7 @@ transform = Transform2D( 1, 0, 0, 1, 567, 0 )
 offset = Vector2( 0, 0 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="sceen_win" parent="." instance=ExtResource( 9 )]
+[node name="scene_win" parent="." instance=ExtResource( 9 )]
 offset = Vector2( 567, 0 )
 transform = Transform2D( 1, 0, 0, 1, 567, 0 )
 
@@ -122,7 +121,7 @@ autoplay = true
 [connection signal="timeout" from="refill_timer" to="grid" method="_on_rifill_timer_timeout"]
 [connection signal="timeout" from="second_timer" to="game_manager" method="_on_second_timer_timeout"]
 [connection signal="create_goal" from="goal_holder" to="top_ui" method="_on_goal_holder_create_goal"]
+[connection signal="game_won" from="goal_holder" to="scene_win" method="_on_goal_holder_game_won"]
 [connection signal="game_won" from="goal_holder" to="game_manager" method="_on_goal_holder_game_won"]
 [connection signal="game_won" from="goal_holder" to="grid" method="_on_goal_holder_game_won"]
-[connection signal="game_won" from="goal_holder" to="sceen_win" method="_on_goal_holder_game_won"]
 [connection signal="start_level" from="level_description_screen" to="grid" method="_on_level_description_screen_start_level"]
