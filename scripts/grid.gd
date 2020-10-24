@@ -362,11 +362,6 @@ func declare_game_over():
 	state = wait;
 
 
-func _on_goal_holder_game_won():
-	state = wait;
-	pass # Replace with function body.
-
-
 func _on_level_description_screen_start_level():
 	state=move
 	pass # Replace with function body.

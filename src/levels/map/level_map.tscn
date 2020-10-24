@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/resources/graphics/interface/backdrop_1.png" type="Texture" id=1]
+[ext_resource path="res://src/levels/map/level_button.tscn" type="PackedScene" id=2]
+
+[node name="level_backdrop" type="TextureRect"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="level_button1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 34.0529, 8.28314 )
+level = 1
+level_to_load = "res://src/levels/level_01/dialogue_01.tscn"
+enabled = true
+
+[node name="level_button2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 355.254, 56.1412 )
+level = 2
+level_to_load = "res://src/levels/level_02/dialogue_02.tscn"
+
+[node name="level_button3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 71.7872, 284.387 )
+level = 3
+level_to_load = "res://src/levels/level_03/dialogue_03.tscn"
+
+[node name="level_button4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 209.839, 473.979 )
+level = 4
+level_to_load = "res://src/levels/level_03/dialogue_03.tscn"

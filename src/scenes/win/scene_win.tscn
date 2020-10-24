@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scenes/game_win.gd" type="Script" id=1]
-[ext_resource path="res://src/resources/graphics/sprites/play.png" type="Texture" id=2]
-[ext_resource path="res://src/resources/graphics/interface/game_win.png" type="Texture" id=3]
+[ext_resource path="res://src/scenes/win/scene_win.gd" type="Script" id=1]
+[ext_resource path="res://src/resources/graphics/interface/game_win.png" type="Texture" id=2]
+[ext_resource path="res://src/resources/graphics/sprites/play.png" type="Texture" id=3]
 [ext_resource path="res://src/resources/graphics/interface/map.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "values": [ Vector2( 576, 0 ), Vector2( 0, 0 ) ]
 }
 
-[node name="sceen_win" type="CanvasLayer"]
+[node name="scene_win" type="CanvasLayer"]
 offset = Vector2( 144, 0 )
 transform = Transform2D( 1, 0, 0, 1, 144, 0 )
 script = ExtResource( 1 )
@@ -42,7 +42,7 @@ margin_left = 40.0
 margin_top = 40.0
 margin_right = 552.0
 margin_bottom = 552.0
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect"]
 margin_top = 256.0
@@ -65,7 +65,7 @@ margin_bottom = 82.0
 [node name="ContinueButton" type="TextureButton" parent="MarginContainer/TextureRect/VBoxContainer/HBoxContainer"]
 margin_right = 200.0
 margin_bottom = 64.0
-texture_normal = ExtResource( 2 )
+texture_normal = ExtResource( 3 )
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer/TextureRect/VBoxContainer/HBoxContainer"]
 margin_left = 204.0

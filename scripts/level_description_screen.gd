@@ -9,16 +9,9 @@ signal start_level
 var level_description_text = 'hejsan';
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var goal_score = get_node_or_null('../goal_holder/goal_score');
-	var fail_timer = get_node_or_null('../fail_holder/fail_timer');
-	
-	if goal_score.score_needed > 0:
-		level_description_text = 'Goal:\n'+ str(goal_score.score_needed) + ' Points';
 
-	if fail_timer.time_needed > 0:
-		level_description_text += '\nFail:\nTimer: '+ str(fail_timer.time_needed);
-		
-				
+	level_description_text = 'Get ready the enemy is\ncomming Kill them';
+
 	$Label.text = level_description_text
 
 
