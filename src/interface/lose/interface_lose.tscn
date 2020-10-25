@@ -5,8 +5,6 @@
 [ext_resource path="res://src/resources/graphics/interface/quit.png" type="Texture" id=3]
 [ext_resource path="res://src/interface/lose/interface_lose.gd" type="Script" id=4]
 
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "slide_in"
 length = 0.4
