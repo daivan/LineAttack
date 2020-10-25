@@ -21,5 +21,5 @@ func _on_Settings_back_button():
 
 
 func _on_Main_play_pressed():
-	get_tree().change_scene("res://scenes/level_select_scene.tscn");
+	get_tree().change_scene("res://src/levels/level_select/level_select.tscn");
 	pass # Replace with function body.
