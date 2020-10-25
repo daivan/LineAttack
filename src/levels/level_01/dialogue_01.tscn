@@ -4,3 +4,4 @@
 
 [node name="screen_dialogue" instance=ExtResource( 1 )]
 level_to_load = "res://src/levels/level_01/level_01.tscn"
+dialogue = "Well the time has come. Show me that you really can play with the big league."

@@ -6,8 +6,11 @@ extends CanvasLayer
 # var b = "text"
 export (String) var level_to_load
 
+export (String, MULTILINE) var dialogue
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$RichTextLabel.text = dialogue
 	pass # Replace with function body.
 
 

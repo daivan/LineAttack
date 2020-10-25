@@ -4,3 +4,4 @@
 
 [node name="screen_dialogue" instance=ExtResource( 1 )]
 level_to_load = "res://src/levels/level_04/level_04.tscn"
+dialogue = "One can only hope to live up to the expectations of the climax!"

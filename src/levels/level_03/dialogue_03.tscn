@@ -4,3 +4,4 @@
 
 [node name="screen_dialogue" instance=ExtResource( 1 )]
 level_to_load = "res://src/levels/level_03/level_03.tscn"
+dialogue = "The end is near. Only I can be the one to finish this. Don't get your hopes up."
