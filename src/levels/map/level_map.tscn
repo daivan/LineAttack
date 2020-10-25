@@ -30,4 +30,4 @@ level_to_load = "res://src/levels/level_03/dialogue_03.tscn"
 [node name="level_button4" parent="." instance=ExtResource( 2 )]
 position = Vector2( 209.839, 473.979 )
 level = 4
-level_to_load = "res://src/levels/level_03/dialogue_03.tscn"
+level_to_load = "res://src/levels/level_04/dialogue_04.tscn"

@@ -1,18 +1,33 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://scenes/game_over.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/goal_background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/interface/lose/interface_lose.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/interface/piece_requirement/interface_piece_requirement.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/resources/graphics/sprites/bottom_ui.png" type="Texture" id=3]
 [ext_resource path="res://src/resources/graphics/sprites/background.png" type="Texture" id=4]
-[ext_resource path="res://scripts/grid.gd" type="Script" id=8]
-[ext_resource path="res://src/scenes/win/scene_win.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/objects/grid/grid.gd" type="Script" id=8]
+[ext_resource path="res://src/interface/win/interface_win.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/objects/game_manager/object_game_manager.gd" type="Script" id=10]
-[ext_resource path="res://scenes/ice_holder.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/top_ui.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/level_description_screen.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/objects/holders/ice/holder_ice.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/interface/level_top/interface_level_top.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/interface/level_description/interface_level_description.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/resources/audio/music/gameplay.ogg" type="AudioStream" id=14]
 [ext_resource path="res://src/objects/holders/holder_enemy/holder_enemy.tscn" type="PackedScene" id=16]
 [ext_resource path="res://src/objects/holders/holder_hero/holder_hero.tscn" type="PackedScene" id=17]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 [node name="game_window" type="Node2D"]
