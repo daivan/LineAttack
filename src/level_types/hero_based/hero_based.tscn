@@ -14,22 +14,6 @@
 [ext_resource path="res://src/objects/holders/holder_enemy/holder_enemy.tscn" type="PackedScene" id=16]
 [ext_resource path="res://src/objects/holders/holder_hero/holder_hero.tscn" type="PackedScene" id=17]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [node name="game_window" type="Node2D"]
 
 [node name="game_manager" type="Node" parent="."]
@@ -118,6 +102,7 @@ autoplay = true
 [connection signal="set_dimensions" from="game_manager" to="grid" method="_on_game_manager_set_dimensions"]
 [connection signal="update_score_information" from="game_manager" to="top_ui" method="_on_game_manager_update_score_information"]
 [connection signal="update_time_information" from="game_manager" to="top_ui" method="_on_game_manager_update_time_information"]
+[connection signal="all_enemies_dead" from="holder_enemy" to="grid" method="_on_holder_enemy_all_enemies_dead"]
 [connection signal="check_goal" from="grid" to="top_ui" method="_on_grid_check_goal"]
 [connection signal="damage_ice" from="grid" to="ice_holder" method="_on_grid_damage_ice"]
 [connection signal="found_match" from="grid" to="holder_enemy" method="_on_grid_found_match"]
