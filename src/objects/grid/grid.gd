@@ -4,6 +4,8 @@ extends Node2D
 enum {wait, move}
 var state;
 
+var game_over;
+
 # Grid variables
 var width;
 var height;
@@ -66,6 +68,7 @@ var light_scene = preload("res://src/Objects/brick/light.tscn");
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	game_over = false;
 	state = wait;
 	randomize();
 	all_pieces = make_2d_array();
@@ -163,7 +166,7 @@ func _input(event):
 		print("ui_touch")
 	
 func touch_input():
-	
+		
 	if Input.is_action_just_pressed("ui_touch"):
 		if is_in_grid(pixel_to_grid(get_global_mouse_position().x, get_global_mouse_position().y)):
 			first_touch = pixel_to_grid(get_global_mouse_position().x, get_global_mouse_position().y);
@@ -223,6 +226,10 @@ func touch_difference(grid_1, grid_2):
 		
 		
 func _process(delta):
+	# state sets to move every time blocks refill
+	if game_over:
+		state = wait;
+		
 	if state == move:
 		touch_input();
 #	pass
@@ -358,20 +365,30 @@ func _on_Timer_timeout():
 func declare_game_over():
 	emit_signal("game_over");
 	print("Game Over");
-	state = wait;
+	game_over = true;
 
 
 func _on_level_description_screen_start_level():
-	state=move
+	state = move
 	pass # Replace with function body.
 
 
 func _on_fail_holder_game_lost():
-	state = wait;
+	game_over = true;
 	pass # Replace with function body.
 
 
 func _on_game_manager_set_dimensions(new_width, new_height):
 	width = new_width
 	height = new_height
+	pass # Replace with function body.
+
+
+func _on_goal_holder_game_won():
+	game_over = true;
+	pass # Replace with function body.
+
+
+func _on_holder_enemy_all_enemies_dead():
+	game_over = true;
 	pass # Replace with function body.

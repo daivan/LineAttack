@@ -5,8 +5,6 @@
 [ext_resource path="res://src/resources/graphics/sprites/play.png" type="Texture" id=3]
 [ext_resource path="res://src/resources/graphics/interface/map.png" type="Texture" id=4]
 
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "slide_in"
 tracks/0/type = "value"
