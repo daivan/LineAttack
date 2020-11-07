@@ -1,17 +1,30 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/resources/graphics/sprites/background.png" type="Texture" id=1]
-[ext_resource path="res://src/resources/graphics/sprites/portrait.png" type="Texture" id=2]
-[ext_resource path="res://src/resources/graphics/sprites/play.png" type="Texture" id=3]
+[ext_resource path="res://src/resources/fonts/kenney_blocks.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/resources/characters/character1.png" type="Texture" id=3]
 [ext_resource path="res://src/scenes/dialogue/scene_dialogue.gd" type="Script" id=4]
 
 [node name="scene_dialogue" type="CanvasLayer"]
 script = ExtResource( 4 )
+dialogue_objects = [ {
+
+} ]
 
 [node name="TextureRect" type="TextureRect" parent="."]
+margin_top = -4.0
 margin_right = 576.0
-margin_bottom = 1024.0
+margin_bottom = 1020.0
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="character" type="TextureRect" parent="."]
+margin_top = -4.0
+margin_right = 576.0
+margin_bottom = 1020.0
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -27,32 +40,45 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 230.413
-margin_top = 814.825
-margin_right = 539.413
-margin_bottom = 968.825
+margin_left = 24.0
+margin_top = 810.0
+margin_right = 547.0
+margin_bottom = 994.0
+custom_fonts/normal_font = ExtResource( 2 )
 text = "I need you to complete this level because we need your help!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = 14.2544
-margin_top = 803.591
-margin_right = 214.254
-margin_bottom = 1003.59
-texture = ExtResource( 2 )
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 17.0
+margin_top = 18.0
+margin_right = 555.0
+margin_bottom = 998.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureButton" parent="."]
-margin_left = 366.69
-margin_top = 714.33
-margin_right = 406.69
-margin_bottom = 754.33
-texture_normal = ExtResource( 3 )
+[node name="name_background" type="ColorRect" parent="."]
+margin_left = 5.0
+margin_top = 752.0
+margin_right = 187.0
+margin_bottom = 791.0
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name_label" type="Label" parent="name_background"]
+margin_left = 10.0
+margin_right = 188.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 2 )
+text = "Hej"
+align = 3
+valign = 3
+__meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
