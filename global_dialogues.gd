@@ -1,23 +1,47 @@
 extends Node
 
 
-var dialogue_array = [
-	{
-		name = "Jack",
-		image = "res://src/resources/characters/character1.png",
-		position = 'left',
-		text = 'WOW WOW Wetiline text'
+var dialogue_array = {
+	"level_01":{
+		0: {
+		"name": "Jackaaa",
+		"image": "res://src/resources/characters/character1.png",
+		"position": 'left',
+		"text": 'WOW WOW Wetiline text'
+		},
+		1: {
+		"name": "daivanaaa",
+		"image": "res://src/resources/characters/character2.png",
+		"position": 'right',
+		"text": 'WOW WOW Wetilef kfjea lkfjel jine text'
+		}
 	},
-	{
-		name = "daivan",
-		image = "res://src/resources/characters/character2.png",
-		position = 'right',
-		text = 'WOW WOW tiline text 2222'
+	"level_02":{
+		0: {
+		"name": "Jackaaa22",
+		"image": "res://src/resources/characters/character1.png",
+		"position": 'left',
+		"text": 'WOW WOW Wetiline text'
+		},
+		1: {
+		"name": "daivanaaa222",
+		"image": "res://src/resources/characters/character2.png",
+		"position": 'right',
+		"text": 'WOW WOW Wetilef kfjea lkfjel jine text'
+		}
 	},
-	{
-		name = "Jack",
-		image = "res://src/resources/characters/character1.png",
-		position = 'left',
-		text = 'WOW WOW iline text 3333'
-	},					
-]
+	"level_03":{
+		0: {
+		"name": "Jackaaa333",
+		"image": "res://src/resources/characters/character1.png",
+		"position": 'left',
+		"text": 'WOW WOW Wetiline text'
+		},
+		1: {
+		"name": "daivanaaa333",
+		"image": "res://src/resources/characters/character2.png",
+		"position": 'right',
+		"text": 'WOW WOW Wetilef kfjea lkfjel jine text'
+		}
+	},
+}

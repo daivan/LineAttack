@@ -1,15 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/resources/graphics/sprites/background.png" type="Texture" id=1]
 [ext_resource path="res://src/resources/fonts/kenney_blocks.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/resources/characters/character1.png" type="Texture" id=3]
 [ext_resource path="res://src/scenes/dialogue/scene_dialogue.gd" type="Script" id=4]
+[ext_resource path="res://src/resources/graphics/sprites/play.png" type="Texture" id=5]
 
 [node name="scene_dialogue" type="CanvasLayer"]
 script = ExtResource( 4 )
-dialogue_objects = [ {
-
-} ]
+level_to_load = "res://src/levels/level_01/level_01.tscn"
+global_dialogue_to_load = "level_01"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_top = -4.0
@@ -74,11 +74,16 @@ margin_left = 10.0
 margin_right = 188.0
 margin_bottom = 50.0
 custom_fonts/font = ExtResource( 2 )
-text = "Hej"
+text = "place"
 align = 3
 valign = 3
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="play" type="Sprite" parent="."]
+visible = false
+position = Vector2( 448, 60 )
+texture = ExtResource( 5 )
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
