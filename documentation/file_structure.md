@@ -13,3 +13,5 @@ https://www.braindead.bzh/entry/creating-a-game-with-godot-engine-ep-2-project-o
 
 ## Files
 1. project.godot  - Tells Godot that this folder has a project in it
+2. global_dialogues.gd  - Autoloads with project settings. Holds all the dialogues in all the levels
+2. game_data_manager.gd  - Autoloads with project settings. Holds all the game settings
