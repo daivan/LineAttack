@@ -6,6 +6,7 @@ export (int) var height
 
 # Level Variables
 export (int) var level
+export (int) var unlock_next_level
 export (bool) var is_moves
 export (int) var time_left
 var current_time
@@ -62,5 +63,22 @@ func game_lost_by_time() -> bool:
 		return true
 	return false
 	
+func unlock_next_level():
+
+	game_data_manager.level_information[unlock_next_level] = {
+		"unlocked": true,
+		"high_score": 0,
+		"stars_unlocked": 0
+	} 
+	game_data_manager.save_data();
 
 
+
+func _on_goal_holder_game_won():
+	unlock_next_level();
+	pass # Replace with function body.
+
+
+func _on_holder_enemy_all_enemies_dead():
+	unlock_next_level();
+	pass # Replace with function body.
