@@ -10,6 +10,17 @@ signal all_enemies_dead
 #Load the resourse using preload
 const MySmokeResource = preload("res://src/objects/enemy/enemy.tscn")
 
+var selected_enemies = [
+	{
+		"name": 'Daivan',
+		"position": Vector2(50,50)
+	},
+	{
+		"name": 'Daivan 22',
+		"position": Vector2(200,50)
+	}	
+]
+
 var enemies = [];
 
 func _ready():
@@ -17,15 +28,11 @@ func _ready():
 	# Create a cross node signal
 	var sceen_win = get_tree().get_current_scene().get_node("sceen_win");
 	connect("all_enemies_dead", sceen_win, "_on_holder_enemy_all_enemies_dead");
-	#Make instance
-	var GrabedInstance = MySmokeResource.instance()
-	#You could now make changes to the new instance if you wanted
-	#Attach it to the tree
-	enemies.push_back(GrabedInstance);
-	GrabedInstance.position = Vector2(50,50);
+	
+	for selected_enemy in selected_enemies:
+		addEnemiesToHolder(selected_enemy);
+	
 
-	self.add_child(GrabedInstance)
-	print(GrabedInstance.z_index);
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -49,3 +56,13 @@ func _on_grid_found_match(i, j):
 		enemy.checkTakeDamage(i, j);
 	checkWin();
 	pass # Replace with function body.
+
+func addEnemiesToHolder(selected_enemy):
+	var GrabedInstance = MySmokeResource.instance()
+	#You could now make changes to the new instance if you wanted
+	#Attach it to the tree
+	enemies.push_back(GrabedInstance);
+	GrabedInstance.position = selected_enemy.position;
+
+	self.add_child(GrabedInstance)
+	print(GrabedInstance.z_index);
