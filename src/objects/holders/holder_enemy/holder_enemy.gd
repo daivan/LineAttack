@@ -13,10 +13,12 @@ const MySmokeResource = preload("res://src/objects/enemy/enemy.tscn")
 var selected_enemies = [
 	{
 		"name": 'Daivan',
+		"health": 70,
 		"position": Vector2(50,50)
 	},
 	{
 		"name": 'Daivan 22',
+		"health": 100,
 		"position": Vector2(200,50)
 	}	
 ]
@@ -63,6 +65,7 @@ func addEnemiesToHolder(selected_enemy):
 	#Attach it to the tree
 	enemies.push_back(GrabedInstance);
 	GrabedInstance.position = selected_enemy.position;
+	GrabedInstance.health = selected_enemy.health;
 
 	self.add_child(GrabedInstance)
 	print(GrabedInstance.z_index);

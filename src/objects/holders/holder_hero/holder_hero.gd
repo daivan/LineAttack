@@ -13,10 +13,12 @@ const HeroObject = preload("res://src/objects/hero/hero.tscn")
 var selected_heroes = [
 	{
 		"name": 'Daivan',
+		"health": 100,
 		"position": Vector2(50,50)
 	},
 	{
 		"name": 'Daivan 22',
+		"health": 20,
 		"position": Vector2(100,50)
 	}	
 ]
@@ -27,7 +29,6 @@ func _ready():
 	#Make instance
 	for selected_hero in selected_heroes:
 		addHeroToHolder(selected_hero);
-	
 
 
 func areAllHeroesDead():
@@ -38,14 +39,14 @@ func areAllHeroesDead():
 	return allDead;
 	
 	
-func checkWin():
+func checkDefeat():
 	if(areAllHeroesDead()):
 		print('YOU WIN ALL EENEMIES DEAD!');
 		
 func _on_grid_found_match(i, j):
 	for hero in heroes:
 		hero.checkTakeDamage(i, j);
-	checkWin();
+	checkDefeat();
 	pass # Replace with function body.
 
 func addHeroToHolder(selected_hero):
@@ -54,6 +55,7 @@ func addHeroToHolder(selected_hero):
 	#Attach it to the tree
 	heroes.push_back(Hero);
 	Hero.position = selected_hero.position;
+	Hero.health = selected_hero.health;
 
 	self.add_child(Hero)
 
