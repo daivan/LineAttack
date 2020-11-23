@@ -10,22 +10,25 @@ extends Node
 #Load the resourse using preload
 const HeroObject = preload("res://src/objects/hero/hero.tscn")
 
+var selected_heroes = [
+	{
+		"name": 'Daivan',
+		"position": Vector2(50,50)
+	},
+	{
+		"name": 'Daivan 22',
+		"position": Vector2(100,50)
+	}	
+]
+
 var heroes = [];
 
 func _ready():
 	#Make instance
-	var Hero = HeroObject.instance()
-	#You could now make changes to the new instance if you wanted
-	#Attach it to the tree
-	heroes.push_back(Hero);
-	Hero.position = Vector2(50,50);
-
-	self.add_child(Hero)
-	print(Hero.z_index);
+	for selected_hero in selected_heroes:
+		addHeroToHolder(selected_hero);
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
 
 func areAllHeroesDead():
 	var allDead = true;
@@ -44,3 +47,14 @@ func _on_grid_found_match(i, j):
 		hero.checkTakeDamage(i, j);
 	checkWin();
 	pass # Replace with function body.
+
+func addHeroToHolder(selected_hero):
+	var Hero = HeroObject.instance()
+	#You could now make changes to the new instance if you wanted
+	#Attach it to the tree
+	heroes.push_back(Hero);
+	Hero.position = selected_hero.position;
+
+	self.add_child(Hero)
+
+	pass

@@ -1,16 +1,13 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/interface/lose/interface_lose.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/interface/piece_requirement/interface_piece_requirement.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/objects/grid/grid_hero_based.gd" type="Script" id=2]
 [ext_resource path="res://src/resources/graphics/sprites/bottom_ui.png" type="Texture" id=3]
 [ext_resource path="res://src/resources/graphics/sprites/background.png" type="Texture" id=4]
-[ext_resource path="res://src/objects/grid/grid.gd" type="Script" id=8]
 [ext_resource path="res://src/interface/win/interface_win.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/objects/game_manager/object_game_manager.gd" type="Script" id=10]
 [ext_resource path="res://src/objects/holders/ice/holder_ice.tscn" type="PackedScene" id=11]
-[ext_resource path="res://src/interface/level_top/interface_level_top.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/interface/level_description/interface_level_description.tscn" type="PackedScene" id=13]
-[ext_resource path="res://src/resources/audio/music/gameplay.ogg" type="AudioStream" id=14]
 [ext_resource path="res://src/objects/holders/holder_enemy/holder_enemy.tscn" type="PackedScene" id=16]
 [ext_resource path="res://src/objects/holders/holder_hero/holder_hero.tscn" type="PackedScene" id=17]
 
@@ -54,12 +51,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="top_ui" parent="." instance=ExtResource( 12 )]
-show_behind_parent = true
-goal_prefab = ExtResource( 2 )
-
 [node name="grid" type="Node2D" parent="."]
-script = ExtResource( 8 )
+script = ExtResource( 2 )
 x_start = 64
 y_start = 800
 offset = 64
@@ -94,23 +87,14 @@ transform = Transform2D( 1, 0, 0, 1, 567, 0 )
 [node name="level_description_screen" parent="." instance=ExtResource( 13 )]
 offset = Vector2( 0, 0 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 14 )
-autoplay = true
 [connection signal="game_lost" from="game_manager" to="game_over_screen" method="_on_game_manager_game_lost"]
 [connection signal="set_dimensions" from="game_manager" to="grid" method="_on_game_manager_set_dimensions"]
-[connection signal="update_score_information" from="game_manager" to="top_ui" method="_on_game_manager_update_score_information"]
-[connection signal="update_time_information" from="game_manager" to="top_ui" method="_on_game_manager_update_time_information"]
 [connection signal="all_enemies_dead" from="holder_enemy" to="grid" method="_on_holder_enemy_all_enemies_dead"]
 [connection signal="all_enemies_dead" from="holder_enemy" to="game_manager" method="_on_holder_enemy_all_enemies_dead"]
-[connection signal="check_goal" from="grid" to="top_ui" method="_on_grid_check_goal"]
 [connection signal="damage_ice" from="grid" to="ice_holder" method="_on_grid_damage_ice"]
 [connection signal="found_match" from="grid" to="holder_enemy" method="_on_grid_found_match"]
 [connection signal="game_over" from="grid" to="game_over_screen" method="_on_grid_game_over"]
 [connection signal="make_ice" from="grid" to="ice_holder" method="_on_grid_make_ice"]
-[connection signal="setup_max_score" from="grid" to="top_ui" method="_on_grid_setup_max_score"]
-[connection signal="update_counter" from="grid" to="top_ui" method="_on_grid_update_counter"]
 [connection signal="update_score" from="grid" to="game_manager" method="_on_grid_update_score"]
 [connection signal="timeout" from="destroy_timer" to="grid" method="_on_destroy_timer_timeout"]
 [connection signal="timeout" from="collapse_timer" to="grid" method="_on_collapse_timer_timeout"]
