@@ -4,7 +4,7 @@ extends Node
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+signal all_heroes_dead
 
 # Called when the node enters the scene tree for the first time.
 #Load the resourse using preload
@@ -26,6 +26,12 @@ var selected_heroes = [
 var heroes = [];
 
 func _ready():
+	
+	# Create a cross node signal
+	var game_over_screen = get_tree().get_current_scene().get_node("game_over_screen");
+	connect("all_heroes_dead", game_over_screen, "_on_holder_hero_all_heroes_dead");
+	
+	
 	#Make instance
 	for selected_hero in selected_heroes:
 		addHeroToHolder(selected_hero);
@@ -41,7 +47,8 @@ func areAllHeroesDead():
 	
 func checkDefeat():
 	if(areAllHeroesDead()):
-		print('YOU WIN ALL EENEMIES DEAD!');
+		print('You lose');
+		emit_signal("all_heroes_dead");
 		
 func _on_grid_found_match(i, j):
 	for hero in heroes:
@@ -60,3 +67,9 @@ func addHeroToHolder(selected_hero):
 	self.add_child(Hero)
 
 	pass
+
+func _on_enemy_attacking_hero(attack_power):
+	print('are we getting attacked?');
+	for hero in heroes:
+		hero.checkTakeDamage();
+	checkDefeat();

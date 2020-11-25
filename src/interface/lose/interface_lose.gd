@@ -19,3 +19,8 @@ func _on_grid_game_over():
 func _on_game_manager_game_lost():
 	slide_in();	
 	pass # Replace with function body.
+
+# signal from holder_hero
+func _on_holder_hero_all_heroes_dead():
+	slide_in();	
+	pass # Replace with function body.

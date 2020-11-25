@@ -25,7 +25,7 @@ texture = ExtResource( 2 )
 margin_left = -36.0
 margin_top = 37.0
 margin_right = 134.0
-margin_bottom = 92.0
+margin_bottom = 79.0
 step = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -36,6 +36,15 @@ margin_left = -33.2449
 margin_top = -104.857
 margin_right = 128.755
 margin_bottom = 112.143
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AttackTimer" type="ProgressBar" parent="."]
+margin_left = -36.0
+margin_top = 88.0
+margin_right = 130.0
+margin_bottom = 112.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -16,12 +16,12 @@ func _ready():
 func _process(delta):
 	$ProgressBar.value = self.health;
 
-func checkTakeDamage(i, j):
+func checkTakeDamage():
 	# Take damage
-	self.takeDamage(i, j);
+	self.takeDamage();
 
-func takeDamage(i, j):
-	self.health = self.health - 10;
+func takeDamage():
+	self.health = self.health - 30;
 	isDead();
 	
 func isDead():
