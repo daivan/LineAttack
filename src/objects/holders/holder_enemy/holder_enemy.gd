@@ -14,12 +14,14 @@ var selected_enemies = [
 	{
 		"name": 'Daivan',
 		"health": 70,
-		"position": Vector2(50,50)
+		"position": Vector2(50,50),
+		"selected": true
 	},
 	{
 		"name": 'Daivan 22',
 		"health": 100,
-		"position": Vector2(200,50)
+		"position": Vector2(200,50),
+		"selected": false
 	}	
 ]
 
@@ -55,7 +57,8 @@ func checkWin():
 		
 func _on_grid_found_match(i, j):
 	for enemy in enemies:
-		enemy.checkTakeDamage(i, j);
+		if enemy.selected:
+			enemy.checkTakeDamage(i, j);
 	checkWin();
 	pass # Replace with function body.
 
@@ -66,6 +69,16 @@ func addEnemiesToHolder(selected_enemy):
 	enemies.push_back(GrabedInstance);
 	GrabedInstance.position = selected_enemy.position;
 	GrabedInstance.health = selected_enemy.health;
+	GrabedInstance.selected = selected_enemy.selected;
 
 	self.add_child(GrabedInstance)
 	print(GrabedInstance.z_index);
+
+# Signal from enemy when you clicked on a child enemy
+func _on_enemy_selecting_enemy():
+	print('is it working as it should?');
+	for enemy in enemies:
+		enemy.selected = false;
+		
+	
+	
