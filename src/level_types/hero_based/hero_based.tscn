@@ -99,5 +99,5 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 [connection signal="timeout" from="refill_timer" to="grid" method="_on_rifill_timer_timeout"]
 [connection signal="timeout" from="second_timer" to="game_manager" method="_on_second_timer_timeout"]
 [connection signal="start_level" from="level_description_screen" to="grid" method="_on_level_description_screen_start_level"]
-[connection signal="all_enemies_dead" from="holder_enemy" to="game_manager" method="_on_holder_enemy_all_enemies_dead"]
 [connection signal="all_enemies_dead" from="holder_enemy" to="grid" method="_on_holder_enemy_all_enemies_dead"]
+[connection signal="all_enemies_dead" from="holder_enemy" to="game_manager" method="_on_holder_enemy_all_enemies_dead"]
