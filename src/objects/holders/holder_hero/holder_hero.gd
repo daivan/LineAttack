@@ -13,12 +13,12 @@ const HeroObject = preload("res://src/objects/hero/hero.tscn")
 var selected_heroes = [
 	{
 		"name": 'Daivan',
-		"health": 100,
+		"health": 1000,
 		"position": Vector2(50,50)
 	},
 	{
 		"name": 'Daivan 22',
-		"health": 20,
+		"health": 2000,
 		"position": Vector2(100,50)
 	}	
 ]

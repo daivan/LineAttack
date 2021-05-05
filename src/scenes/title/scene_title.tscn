@@ -46,4 +46,5 @@ text = "version 1.5.0 build 12"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]

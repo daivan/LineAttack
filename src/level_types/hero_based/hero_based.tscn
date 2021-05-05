@@ -15,8 +15,8 @@
 
 [node name="game_manager" type="Node" parent="."]
 script = ExtResource( 10 )
-width = 6
-height = 6
+width = 10
+height = 10
 level = 2
 time_left = 3000
 max_score = 200000
@@ -87,6 +87,7 @@ offset = Vector2( 0, 0 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="holder_enemy" parent="." instance=ExtResource( 16 )]
+
 [connection signal="game_lost" from="game_manager" to="game_over_screen" method="_on_game_manager_game_lost"]
 [connection signal="set_dimensions" from="game_manager" to="grid" method="_on_game_manager_set_dimensions"]
 [connection signal="damage_ice" from="grid" to="ice_holder" method="_on_grid_damage_ice"]
@@ -99,5 +100,5 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 [connection signal="timeout" from="refill_timer" to="grid" method="_on_rifill_timer_timeout"]
 [connection signal="timeout" from="second_timer" to="game_manager" method="_on_second_timer_timeout"]
 [connection signal="start_level" from="level_description_screen" to="grid" method="_on_level_description_screen_start_level"]
-[connection signal="all_enemies_dead" from="holder_enemy" to="grid" method="_on_holder_enemy_all_enemies_dead"]
 [connection signal="all_enemies_dead" from="holder_enemy" to="game_manager" method="_on_holder_enemy_all_enemies_dead"]
+[connection signal="all_enemies_dead" from="holder_enemy" to="grid" method="_on_holder_enemy_all_enemies_dead"]
