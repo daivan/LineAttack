@@ -33,4 +33,5 @@ text = "01"
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 28.697, 103.776 )
 texture = ExtResource( 1 )
+
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
