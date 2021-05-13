@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/event_type/battle/temp_win.gd" type="Script" id=1]
+[ext_resource path="res://src/event_type/battle/enemy_spawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/event_type/battle/battle_grid.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/event_type/battle/hero_spawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/event_type/battle/battle_game_manager.gd" type="Script" id=5]
 
 [node name="game_window" type="Node2D"]
@@ -32,5 +34,9 @@ __meta__ = {
 
 [node name="battle_grid" parent="." instance=ExtResource( 3 )]
 is_moves = false
+
+[node name="holder_enemy" parent="." instance=ExtResource( 2 )]
+
+[node name="hero_spawner" parent="." instance=ExtResource( 4 )]
 
 [connection signal="pressed" from="temp_win" to="temp_win" method="_on_temp_win_pressed"]
