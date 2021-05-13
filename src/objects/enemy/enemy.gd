@@ -14,16 +14,14 @@ var attackTimer = 5;
 var attackTimerStep = 5;
 var attack_power = 5;
 
+var parent = Node;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	# Create a cross node signal
-	var holder_enemy = get_tree().get_current_scene().get_node("holder_enemy");
-	connect("selecting_enemy", holder_enemy, "_on_enemy_selecting_enemy");
-	
-	# Create a cross node signal to holder_hero
-	var holder_hero = get_tree().get_current_scene().get_node("holder_hero");
-	connect("attacking_hero", holder_hero, "_on_enemy_attacking_hero", [attack_power]);
+	# Create a cross node signal to hero_spawner
+	var hero_spawner = get_tree().get_root().get_node("hero_spawner");
+	connect("attacking_hero", hero_spawner, "_on_enemy_attacking_hero", [attack_power]);
 	
 	pass # Replace with function body.
 
@@ -64,3 +62,8 @@ func _on_TextureButton_pressed():
 	emit_signal("selecting_enemy");
 	selected = true;
 	pass # Replace with function body.
+
+func connectSignal(parent):
+	# Create a cross node signal
+	connect("selecting_enemy", parent, "_on_enemy_selecting_enemy");
+	pass

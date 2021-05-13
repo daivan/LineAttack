@@ -70,6 +70,7 @@ func addEnemiesToHolder(selected_enemy):
 	GrabedInstance.position = selected_enemy.position;
 	GrabedInstance.health = selected_enemy.health;
 	GrabedInstance.selected = selected_enemy.selected;
+	GrabedInstance.connectSignal(self);
 
 	self.add_child(GrabedInstance)
 	print(GrabedInstance.z_index);

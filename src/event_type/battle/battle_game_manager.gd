@@ -25,9 +25,6 @@ signal game_lost
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var timer = get_node('/root/game_window/temp_win')
-	print(timer);
-	timer.connect("health_depleted", self, "_on_Timer_timeout")
 	print(game_data_manager.level_information)
 	setup()
 

@@ -23,6 +23,7 @@ config/icon="res://src/resources/graphics/sprites/pieces/ice_holder.png"
 
 game_data_manager="*res://game_data_manager.gd"
 GLOBAL_DIALOGUE="*res://global_dialogues.gd"
+battle_event_bus="*res://autoload_battle_event_bus.gd"
 
 [display]
 

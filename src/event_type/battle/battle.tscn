@@ -1,42 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://src/event_type/battle/temp_win.gd" type="Script" id=1]
-[ext_resource path="res://src/event_type/battle/enemy_spawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/event_type/battle/battle_game_manager.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/event_type/battle/battle_grid.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/event_type/battle/hero_spawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/event_type/battle/battle_game_manager.gd" type="Script" id=5]
 
 [node name="game_window" type="Node2D"]
 
-[node name="battle_game_manager" type="Node" parent="."]
-script = ExtResource( 5 )
-
-[node name="temp_win" type="Button" parent="."]
-margin_left = 343.181
-margin_top = 438.577
-margin_right = 548.181
-margin_bottom = 565.577
-text = "win"
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="temp_lose" type="Button" parent="."]
-margin_left = 21.2381
-margin_top = 426.718
-margin_right = 196.238
-margin_bottom = 557.718
-text = "lose"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="battle_game_manager" parent="." instance=ExtResource( 2 )]
 
 [node name="battle_grid" parent="." instance=ExtResource( 3 )]
 is_moves = false
-
-[node name="holder_enemy" parent="." instance=ExtResource( 2 )]
-
-[node name="hero_spawner" parent="." instance=ExtResource( 4 )]
-
-[connection signal="pressed" from="temp_win" to="temp_win" method="_on_temp_win_pressed"]
