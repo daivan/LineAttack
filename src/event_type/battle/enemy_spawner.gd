@@ -2,26 +2,26 @@ extends Node
 
 
 # Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 signal all_enemies_dead
 
 # Called when the node enters the scene tree for the first time.
 #Load the resourse using preload
-const MySmokeResource = preload("res://src/objects/enemy/enemy.tscn")
+const EnemyObject = preload("res://src/objects/enemy/enemy.tscn")
 
 var selected_enemies = [
 	{
 		"name": 'Daivan',
 		"health": 70,
 		"position": Vector2(450,50),
-		"selected": true
+		"selected": true,
+		"tscn_destination":"res://src/objects/enemy/enemy_type/enemy_goblin.tscn"
 	},
 	{
 		"name": 'Daivan 22',
 		"health": 100,
 		"position": Vector2(350,50),
-		"selected": false
+		"selected": false,
+		"tscn_destination":"res://src/objects/enemy/enemy_type/enemy_star.tscn"
 	}	
 ]
 
@@ -63,7 +63,10 @@ func _on_grid_found_match(i, j):
 	pass # Replace with function body.
 
 func addEnemiesToHolder(selected_enemy):
-	var GrabedInstance = MySmokeResource.instance()
+	var EnemyObject = load(selected_enemy.tscn_destination);
+	#const EnemyObject = preload(selected_enemy.tscn_destination)
+	
+	var GrabedInstance = EnemyObject.instance()
 	#You could now make changes to the new instance if you wanted
 	#Attach it to the tree
 	enemies.push_back(GrabedInstance);
