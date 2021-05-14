@@ -20,8 +20,8 @@ var parent = Node;
 func _ready():
 	
 	# Create a cross node signal to hero_spawner
-	var hero_spawner = get_tree().get_root().get_node("hero_spawner");
-	connect("attacking_hero", hero_spawner, "_on_enemy_attacking_hero", [attack_power]);
+	#var hero_spawner = get_tree().get_root().get_node("hero_spawner");
+	#connect("attacking_hero", hero_spawner, "_on_enemy_attacking_hero", [attack_power]);
 	
 	pass # Replace with function body.
 
@@ -46,6 +46,7 @@ func checkTakeDamage(i, j):
 	self.takeDamage(i, j);
 
 func takeDamage(i, j):
+	print('taking damage');
 	self.health = self.health - 10;
 	isDead();
 	
@@ -56,14 +57,19 @@ func isDead():
 func tempDisplayHealth():
 	print(health);
 
+func _on_take_damage():
+	print('signaling taking data from autoload');
 
 func _on_TextureButton_pressed():
 	print('touching');
-	emit_signal("selecting_enemy");
+	battle_event_bus.emit_signal("found_match_what", 30);
+
 	selected = true;
 	pass # Replace with function body.
 
 func connectSignal(parent):
 	# Create a cross node signal
+	print(battle_event_bus.what);
+	battle_event_bus.connect("enemy_damage", self, "_on_take_damage");
 	connect("selecting_enemy", parent, "_on_enemy_selecting_enemy");
 	pass

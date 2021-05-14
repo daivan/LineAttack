@@ -73,9 +73,7 @@ var score;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	score = 10;
-	battle_event_bus.connect("found_match", self, "_add_new_points");
-	
+	score = 10;	
 	width = 8;
 	height = 8;
 
@@ -237,8 +235,11 @@ func _process(delta):
 		touch_input();
 #	pass
 
-func found_match():
-	battle_event_bus.emit_signal("found_match", 3);
+func clear_match():
+	battle_event_bus.emit_signal("end_game");
+	battle_event_bus.emit_signal("enemy_damage");
+	print('emit enemy_damage');
+	
 
 func find_matches():
 	for i in width:
@@ -251,16 +252,14 @@ func find_matches():
 							match_and_dim(all_pieces[i + 1][j]);
 							match_and_dim(all_pieces[i][j]);
 							match_and_dim(all_pieces[i - 1][j]);
-							print('found match');
-							found_match();
+							clear_match();
 				if j> 0 && j < height - 1:
 					if !is_piece_null(i,j + 1) && !is_piece_null(i,j - 1):
 						if current_color == all_pieces[i][j+1].color && current_color == all_pieces[i][j-1].color:
 							match_and_dim(all_pieces[i][j+1]);
 							match_and_dim(all_pieces[i][j]);
 							match_and_dim(all_pieces[i][j-1]);
-							print('found match YO YO');
-							found_match();
+							clear_match();
 
 	get_node("destroy_timer").start();
 
@@ -271,6 +270,7 @@ func is_piece_null(column, row):
 	
 	
 func match_and_dim(item):
+	battle_event_bus.emit_signal("end_game");
 	item.matched = true;
 	item.dim();
 	pass;

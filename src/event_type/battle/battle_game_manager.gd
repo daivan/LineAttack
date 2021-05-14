@@ -25,9 +25,19 @@ signal game_lost
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	battle_event_bus.connect("enemy_damage", self, "_on_enemy_damage");
+	battle_event_bus.connect("end_game", self, "_on_end_game");
 	print(game_data_manager.level_information)
 	setup()
 
+func _on_end_game():
+	print('the game has ended');
+	
+func _on_enemy_damage():
+	print('works on an already loaded object');
+	pass
+	
 func _on_Timer_timeout():
 	var level_to_load = "res://src/levels/map/level_map.tscn";
 	get_tree().change_scene(level_to_load);

@@ -5,4 +5,8 @@ extends Node
 
 # List of published signals
 signal found_match(points)
+signal found_match_what(points)
 signal end_game
+signal enemy_damage
+
+var what = 'Coming from autoload';
