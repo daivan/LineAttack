@@ -14,10 +14,14 @@ var attackTimer = 5;
 var attackTimerStep = 5;
 var attack_power = 5;
 
+var attackTurn = 5;
+var currentAttackTurn = 5;
+
 var parent = Node;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	battle_event_bus.connect("move_block", self, "_on_move_block");
 	
 	# Create a cross node signal to hero_spawner
 	#var hero_spawner = get_tree().get_root().get_node("hero_spawner");
@@ -28,19 +32,34 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	$ProgressBar.value = self.health;
-	$AttackTimer.value = 100 -  self.attackTimerStep;
-	$ColorRect.visible = selected
+	$AttackTimer.value = self.currentAttackTurn*20
+	#$ColorRect.visible = selected
 	
 	#print(100 - (self.attackTimer - self.attackTimerStep) * 100);
-	#print(self.attackTimer/(self.attackTimer - self.attackTimerStep) * 100);
-	if attackTimerStep > 0:
-		attackTimerStep = attackTimerStep - delta
-	else:
-		print('ATTACK!!!!');
-		emit_signal("attacking_hero");
-		attackTimerStep = attackTimer
-#	pass
+	
+	#print(self.attackTurn/(self.attackTurn - self.currentAttackTurn) * 100);
+	#if attackTimerStep > 0:
+	#	attackTimerStep = attackTimerStep - delta
+	#else:
+	#	print('ATTACK!!!!');
+	#	emit_signal("attacking_hero");
+	#	attackTimerStep = attackTimer
+	pass
+	
+func _on_move_block():
+	self.currentAttackTurn = self.currentAttackTurn - 1;
+	
+	if self.currentAttackTurn == 0:
+		attack();
+		self.currentAttackTurn = self.attackTurn
+		
+
+func attack():
+	print('attacking!!!!');
+	battle_event_bus.emit_signal("enemy_attack")
+	
 func checkTakeDamage(i, j):
 	# Take damage
 	self.takeDamage(i, j);
@@ -58,11 +77,10 @@ func tempDisplayHealth():
 	print(health);
 
 func _on_take_damage():
-	print('signaling taking data from autoload');
+	pass
 
 func _on_TextureButton_pressed():
 	print('touching');
-	battle_event_bus.emit_signal("found_match_what", 30);
 
 	selected = true;
 	pass # Replace with function body.
@@ -71,5 +89,4 @@ func connectSignal(parent):
 	# Create a cross node signal
 	print(battle_event_bus.what);
 	battle_event_bus.connect("enemy_damage", self, "_on_take_damage");
-	connect("selecting_enemy", parent, "_on_enemy_selecting_enemy");
 	pass

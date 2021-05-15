@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://src/objects/enemy/enemy.gd" type="Script" id=1]
+[ext_resource path="res://src/objects/enemy/enemy_type/enemy_goblin.gd" type="Script" id=1]
 [ext_resource path="res://src/resources/graphics/sprites/goblin.png" type="Texture" id=2]
 
 [node name="enemy_goblin" type="Node2D"]
@@ -41,10 +41,10 @@ __meta__ = {
 }
 
 [node name="AttackTimer" type="ProgressBar" parent="."]
-margin_left = -34.1122
-margin_top = 76.6735
-margin_right = 86.8878
-margin_bottom = 92.6735
+margin_left = -34.0
+margin_top = 77.0
+margin_right = 87.0
+margin_bottom = 135.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -184,6 +184,9 @@ func touch_input():
 			
 			
 func swap_pieces(column, row, direction):
+	
+	battle_event_bus.emit_signal("move_block");
+	
 	var first_piece = all_pieces[column][row];
 	var other_piece = all_pieces[column + direction.x][row + direction.y];
 	if first_piece != null && other_piece != null:
@@ -237,9 +240,6 @@ func _process(delta):
 
 func clear_match():
 	battle_event_bus.emit_signal("end_game");
-	battle_event_bus.emit_signal("enemy_damage");
-	print('emit enemy_damage');
-	
 
 func find_matches():
 	for i in width:

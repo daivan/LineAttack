@@ -32,10 +32,9 @@ func _ready():
 	setup()
 
 func _on_end_game():
-	print('the game has ended');
+	pass
 	
 func _on_enemy_damage():
-	print('works on an already loaded object');
 	pass
 	
 func _on_Timer_timeout():

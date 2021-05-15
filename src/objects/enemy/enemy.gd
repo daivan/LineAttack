@@ -15,6 +15,8 @@ var attackTimerStep = 5;
 var attack_power = 5;
 
 var parent = Node;
+var attackTurn = 5;
+var currentAttackTurn = 5;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -70,6 +72,6 @@ func _on_TextureButton_pressed():
 func connectSignal(parent):
 	# Create a cross node signal
 	print(battle_event_bus.what);
-	battle_event_bus.connect("enemy_damage", self, "_on_take_damage");
+	#battle_event_bus.connect("enemy_damage", self, "_on_take_damage");
 	connect("selecting_enemy", parent, "_on_enemy_selecting_enemy");
 	pass

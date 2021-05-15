@@ -41,10 +41,10 @@ __meta__ = {
 }
 
 [node name="AttackTimer" type="ProgressBar" parent="."]
-margin_left = -34.1122
-margin_top = 76.6735
-margin_right = 86.8878
-margin_bottom = 92.6735
+margin_left = -34.0
+margin_top = 77.0
+margin_right = 87.0
+margin_bottom = 151.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

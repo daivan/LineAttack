@@ -6,20 +6,19 @@ extends Node
 # var b = "text"
 signal all_heroes_dead
 
-# Called when the node enters the scene tree for the first time.
-#Load the resourse using preload
-const HeroObject = preload("res://src/objects/hero/hero.tscn")
 
 var selected_heroes = [
 	{
 		"name": 'Daivan',
-		"health": 1000,
-		"position": Vector2(50,50)
+		"health": 100,
+		"position": Vector2(50,50),
+		"tscn_destination": "res://src/objects/hero/hero_type/hero_normal.tscn"
 	},
 	{
 		"name": 'Daivan 22',
-		"health": 2000,
-		"position": Vector2(100,50)
+		"health": 200,
+		"position": Vector2(100,50),
+		"tscn_destination": "res://src/objects/hero/hero_type/hero_normal.tscn"
 	}	
 ]
 
@@ -28,8 +27,9 @@ var heroes = [];
 func _ready():
 	
 	# Create a cross node signal
-	var game_over_screen = get_tree().get_current_scene().get_node("game_over_screen");
-	connect("all_heroes_dead", game_over_screen, "_on_holder_hero_all_heroes_dead");
+	#var game_over_screen = get_tree().get_current_scene().get_node("game_over_screen");
+	#connect("all_heroes_dead", game_over_screen, "_on_holder_hero_all_heroes_dead");
+	battle_event_bus.connect("enemy_attack", self, "_on_enemy_attack");
 	
 	
 	#Make instance
@@ -57,7 +57,10 @@ func _on_grid_found_match(i, j):
 	pass # Replace with function body.
 
 func addHeroToHolder(selected_hero):
-	var Hero = HeroObject.instance()
+	var heroObject = load(selected_hero.tscn_destination);
+	#const EnemyObject = preload(selected_enemy.tscn_destination)
+
+	var Hero = heroObject.instance()
 	#You could now make changes to the new instance if you wanted
 	#Attach it to the tree
 	heroes.push_back(Hero);
@@ -68,8 +71,14 @@ func addHeroToHolder(selected_hero):
 
 	pass
 
+func _on_enemy_attack():
+	_on_enemy_attacking_hero(10)
+	
+	
+	
 func _on_enemy_attacking_hero(attack_power):
 	print('are we getting attacked?');
 	for hero in heroes:
+		hero.takeDamage();
 		hero.checkTakeDamage();
 	checkDefeat();

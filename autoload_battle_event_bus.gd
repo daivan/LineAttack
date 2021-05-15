@@ -6,7 +6,13 @@ extends Node
 # List of published signals
 signal found_match(points)
 signal found_match_what(points)
+signal move_block
 signal end_game
 signal enemy_damage
+
+# When enemy attack, the emitters are:
+#  - res://src/objects/enemy/enemy_factory.gd
+
+signal enemy_attack
 
 var what = 'Coming from autoload';

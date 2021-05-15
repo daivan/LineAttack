@@ -1,24 +1,20 @@
-extends Node
+extends "res://src/objects/enemy/enemy_factory.gd"
+#extends Node
 
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-signal selecting_enemy
-signal attacking_hero
-
-var health = 50;
-var selected = false;
-
-var attackTimer = 5;
-var attackTimerStep = 5;
-var attack_power = 5;
-
-var parent = Node;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	health = 50;
+	selected = false
+	attackTimer = 5;
+	attackTimerStep = 5;
+	attack_power = 5;
+	parent = Node;
+		
 	# Create a cross node signal to hero_spawner
 	#var hero_spawner = get_tree().get_root().get_node("hero_spawner");
 	#connect("attacking_hero", hero_spawner, "_on_enemy_attacking_hero", [attack_power]);
@@ -27,19 +23,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	$ProgressBar.value = self.health;
-	$AttackTimer.value = 100 -  self.attackTimerStep;
-	$ColorRect.visible = selected
-	
-	#print(100 - (self.attackTimer - self.attackTimerStep) * 100);
-	#print(self.attackTimer/(self.attackTimer - self.attackTimerStep) * 100);
-	if attackTimerStep > 0:
-		attackTimerStep = attackTimerStep - delta
-	else:
-		print('ATTACK!!!!');
-		emit_signal("attacking_hero");
-		attackTimerStep = attackTimer
+
 #	pass
 func checkTakeDamage(i, j):
 	# Take damage
@@ -69,7 +53,6 @@ func _on_TextureButton_pressed():
 
 func connectSignal(parent):
 	# Create a cross node signal
-	print(battle_event_bus.what);
-	battle_event_bus.connect("enemy_damage", self, "_on_take_damage");
-	connect("selecting_enemy", parent, "_on_enemy_selecting_enemy");
+	#print(battle_event_bus.what);
+	#battle_event_bus.connect("enemy_damage", self, "_on_take_damage");
 	pass
