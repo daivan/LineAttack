@@ -30,8 +30,7 @@ var enemies = [];
 func _ready():
 	
 	# Create a cross node signal
-	var sceen_win = get_tree().get_current_scene().get_node("sceen_win");
-	connect("all_enemies_dead", sceen_win, "_on_holder_enemy_all_enemies_dead");
+	battle_event_bus.connect("hero_attack", self, "_on_hero_attack");
 	
 	for selected_enemy in selected_enemies:
 		addEnemiesToHolder(selected_enemy);
@@ -41,6 +40,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func _on_hero_attack():
+	for enemy in enemies:
+		enemy.takeDamage(10,20);
+	checkWin();
 
 func areAllEnemiesDead():
 	var allDead = true;
@@ -52,7 +55,7 @@ func areAllEnemiesDead():
 	
 func checkWin():
 	if(areAllEnemiesDead()):
-		emit_signal("all_enemies_dead");
+		battle_event_bus.emit_signal("all_enemies_dead")
 		print('YOU WIN ALL EENEMIES DEAD!');
 		
 func _on_grid_found_match(i, j):

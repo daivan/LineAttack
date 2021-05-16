@@ -30,6 +30,7 @@ func _ready():
 	#var game_over_screen = get_tree().get_current_scene().get_node("game_over_screen");
 	#connect("all_heroes_dead", game_over_screen, "_on_holder_hero_all_heroes_dead");
 	battle_event_bus.connect("enemy_attack", self, "_on_enemy_attack");
+	battle_event_bus.connect("matched_block", self, "_on_matched_block");
 	
 	
 	#Make instance
@@ -47,8 +48,8 @@ func areAllHeroesDead():
 	
 func checkDefeat():
 	if(areAllHeroesDead()):
-		print('You lose');
-		emit_signal("all_heroes_dead");
+		print('-------------You lose--------------');
+		battle_event_bus.emit_signal("all_heroes_dead");
 		
 func _on_grid_found_match(i, j):
 	for hero in heroes:
@@ -71,9 +72,11 @@ func addHeroToHolder(selected_hero):
 
 	pass
 
+func _on_matched_block():
+	battle_event_bus.emit_signal("hero_attack")
+
 func _on_enemy_attack():
 	_on_enemy_attacking_hero(10)
-	
 	
 	
 func _on_enemy_attacking_hero(attack_power):

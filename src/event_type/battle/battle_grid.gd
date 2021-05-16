@@ -239,7 +239,8 @@ func _process(delta):
 #	pass
 
 func clear_match():
-	battle_event_bus.emit_signal("end_game");
+	battle_event_bus.emit_signal('matched_block')
+	pass
 
 func find_matches():
 	for i in width:
@@ -270,7 +271,6 @@ func is_piece_null(column, row):
 	
 	
 func match_and_dim(item):
-	battle_event_bus.emit_signal("end_game");
 	item.matched = true;
 	item.dim();
 	pass;
