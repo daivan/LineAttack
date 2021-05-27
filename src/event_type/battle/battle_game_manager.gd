@@ -32,11 +32,11 @@ func _ready():
 	setup()
 
 func _on_all_enemies_dead():
-	print('You WON bro!!!')
+	get_tree().change_scene("res://src/scenes/battle_win/win.tscn");
 	pass
 	
 func _on_all_heroes_dead():
-	print('You lost bro!!!')
+	get_tree().change_scene("res://src/scenes/battle_lose/lose.tscn");
 	pass
 	
 
