@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/resources/graphics/interface/backdrop_1.png" type="Texture" id=1]
-[ext_resource path="res://src/levels/map/level_button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/objects/button/map/event_select/event_select.tscn" type="PackedScene" id=3]
 
 [node name="level_backdrop" type="TextureRect"]
@@ -12,25 +11,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="level_button1" parent="." instance=ExtResource( 2 )]
-position = Vector2( 226.821, 5.7633 )
-level = 1
-level_to_load = "res://src/levels/level_01/dialogue_01.tscn"
+[node name="event_select" parent="." instance=ExtResource( 3 )]
+margin_left = 242.452
+margin_top = 7.85722
+margin_right = 242.484
+margin_bottom = 8.20122
 enabled = true
 
-[node name="level_button2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 225.482, 178.354 )
-level = 2
-level_to_load = "res://src/levels/level_02/dialogue_02.tscn"
+[node name="event_select2" parent="." instance=ExtResource( 3 )]
+margin_left = 245.819
+margin_top = 180.717
+margin_right = 245.851
+margin_bottom = 181.061
 
-[node name="level_button3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 229.277, 351.163 )
-level = 3
-level_to_load = "res://src/levels/level_03/dialogue_03.tscn"
-
-[node name="level_button4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 232.518, 563.433 )
-level = 4
-level_to_load = "res://src/levels/level_04/dialogue_04.tscn"
-
-[node name="event_select" parent="." instance=ExtResource( 3 )]
+[node name="event_select3" parent="." instance=ExtResource( 3 )]
+margin_left = 248.064
+margin_top = 360.311
+margin_right = 248.096
+margin_bottom = 360.654
+enabled = true

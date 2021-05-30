@@ -1,15 +1,25 @@
 extends Control
 
-export (String) var level_to_load
+export (bool) var enabled
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export (int) var step
 
+enum EVENT_TYPE { battle = 0, shop = 1, event = 2 }
+export(EVENT_TYPE) var event_type = EVENT_TYPE.battle
+
+var event_to_load
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	level_to_load = "res://src/event_type/battle/battle.tscn"
+	# Check if global step is higher than set step, if so enable
+
+	if self.enabled == true:
+		get_node("texture_button").set_normal_texture(load("res://src/resources/graphics/interface/greenbutton.png"));
+	else:
+		get_node("texture_button").set_normal_texture(load("res://src/resources/graphics/interface/redbutton.png"));
+	
+	if self.event_type == 0:
+		self.event_to_load = "res://src/event_type/battle/battle.tscn"
 	pass # Replace with function body.
 
 
@@ -19,6 +29,7 @@ func _ready():
 
 
 func _on_texture_button_pressed():
-	get_tree().change_scene(level_to_load);
-	print("hejsan")
+	if self.enabled == true:
+		get_tree().change_scene(self.event_to_load);
+		
 	pass # Replace with function body.	
