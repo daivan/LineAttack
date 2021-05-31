@@ -1,5 +1,6 @@
 extends Node
 
+var stage = 0
 
 var level_information = {
 }
@@ -48,3 +49,9 @@ func load_data():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func reset_game():
+	self.stage = 0
+
+func next_stage():
+	self.stage = self.stage + 1

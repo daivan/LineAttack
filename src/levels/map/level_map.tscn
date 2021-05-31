@@ -16,17 +16,17 @@ margin_left = 242.452
 margin_top = 7.85722
 margin_right = 242.484
 margin_bottom = 8.20122
-enabled = true
 
 [node name="event_select2" parent="." instance=ExtResource( 3 )]
 margin_left = 245.819
 margin_top = 180.717
 margin_right = 245.851
 margin_bottom = 181.061
+stage = 1
 
 [node name="event_select3" parent="." instance=ExtResource( 3 )]
 margin_left = 248.064
 margin_top = 360.311
 margin_right = 248.096
 margin_bottom = 360.654
-enabled = true
+stage = 2

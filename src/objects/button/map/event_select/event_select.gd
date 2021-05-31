@@ -1,17 +1,19 @@
 extends Control
 
-export (bool) var enabled
-
-export (int) var step
+export (int) var stage
 
 enum EVENT_TYPE { battle = 0, shop = 1, event = 2 }
 export(EVENT_TYPE) var event_type = EVENT_TYPE.battle
 
 var event_to_load
+var enabled = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Check if global step is higher than set step, if so enable
+	self.enabled = false
+	if game_data_manager.stage == self.stage:
+		self.enabled = true
 
 	if self.enabled == true:
 		get_node("texture_button").set_normal_texture(load("res://src/resources/graphics/interface/greenbutton.png"));
