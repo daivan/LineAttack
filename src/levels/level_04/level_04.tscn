@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://src/level_types/hero_based/hero_based.tscn" type="PackedScene" id=1]
-
-[node name="game_window" instance=ExtResource( 1 )]

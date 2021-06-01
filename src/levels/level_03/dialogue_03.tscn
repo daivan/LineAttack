@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://src/scenes/dialogue/scene_dialogue.tscn" type="PackedScene" id=1]
-
-[node name="screen_dialogue" instance=ExtResource( 1 )]
-level_to_load = "res://src/levels/level_03/level_03.tscn"
-dialogue = "The end is near. Only I can be the one to finish this. Don't get your hopes up."

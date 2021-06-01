@@ -21,7 +21,7 @@ func checkTakeDamage():
 	self.takeDamage();
 
 func takeDamage():
-	self.health = self.health - 30;
+	self.health = self.health - 5;
 	isDead();
 	
 func isDead():

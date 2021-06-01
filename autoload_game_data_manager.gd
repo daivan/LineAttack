@@ -2,6 +2,23 @@ extends Node
 
 var stage = 0
 
+var default_heroes = [
+	{
+		"name": 'Daivan',
+		"health": 100,
+		"position": Vector2(50,50),
+		"tscn_destination": "res://src/objects/hero/hero_type/hero_normal.tscn"
+	},
+	{
+		"name": 'Daivan 22',
+		"health": 200,
+		"position": Vector2(100,100),
+		"tscn_destination": "res://src/objects/hero/hero_type/hero_normal.tscn"
+	}	
+]
+
+var heroes = default_heroes
+
 var level_information = {
 }
 
@@ -51,6 +68,7 @@ func load_data():
 #	pass
 
 func reset_game():
+	self.heroes = self.default_heroes
 	self.stage = 0
 
 func next_stage():

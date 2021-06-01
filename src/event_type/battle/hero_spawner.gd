@@ -7,20 +7,7 @@ extends Node
 signal all_heroes_dead
 
 
-var selected_heroes = [
-	{
-		"name": 'Daivan',
-		"health": 100,
-		"position": Vector2(50,50),
-		"tscn_destination": "res://src/objects/hero/hero_type/hero_normal.tscn"
-	},
-	{
-		"name": 'Daivan 22',
-		"health": 200,
-		"position": Vector2(100,50),
-		"tscn_destination": "res://src/objects/hero/hero_type/hero_normal.tscn"
-	}	
-]
+var selected_heroes = game_data_manager.heroes
 
 var heroes = [];
 
@@ -32,12 +19,23 @@ func _ready():
 	battle_event_bus.connect("enemy_attack", self, "_on_enemy_attack");
 	battle_event_bus.connect("matched_block", self, "_on_matched_block");
 	
+	battle_event_bus.connect("all_enemies_dead", self, "_on_all_enemies_dead");
 	
 	#Make instance
 	for selected_hero in selected_heroes:
 		addHeroToHolder(selected_hero);
 
-
+func _on_all_enemies_dead():
+	# Save the health of all heroes to next round
+	var i = 0;
+	for hero in heroes:
+		print(hero.health);
+		selected_heroes[i].health = hero.health
+		i=i+1
+		
+	game_data_manager.heroes = selected_heroes
+	pass
+	
 func areAllHeroesDead():
 	var allDead = true;
 	for hero in heroes:
